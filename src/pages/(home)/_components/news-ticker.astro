@@ -1,0 +1,76 @@
+---
+import NewsTickerItem from "./_elements/news-ticker-item.astro";
+
+const newsTickerItems = [
+  {
+    title: "AstroJS News Ticker Item 1",
+    path: "/news",
+  },
+  {
+    title: "AstroJS News Ticker Item 2",
+    path: "/news",
+  },
+  {
+    title: "AstroJS News Ticker Item 3",
+    path: "/news",
+  },
+  {
+    title: "AstroJS News Ticker Item 4",
+    path: "/news",
+  },
+  {
+    title: "AstroJS News Ticker Item 5",
+    path: "/news",
+  },
+  {
+    title: "AstroJS News Ticker Item 6",
+    path: "/news",
+  },
+];
+---
+
+<section class="container mb-6">
+  <div class="bg-slate-100 rounded-md relative h-10 overflow-hidden">
+    <h2
+      class="absolute left-0 top-0 h-full bg-slate-100 flex items-center justify-center z-10 px-2"
+    >
+      TOP News:
+    </h2>
+    <div
+      class="marquee-container flex w-[200%] h-full absolute overflow-hidden"
+    >
+      <ul class="flex w-full h-full items-center">
+        {
+          newsTickerItems.map((item) => (
+            <NewsTickerItem title={item.title} path={item.path} />
+          ))
+        }
+      </ul>
+      <ul class="flex w-full h-full items-center">
+        {
+          newsTickerItems.map((item) => (
+            <NewsTickerItem title={item.title} path={item.path} />
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  h2 {
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
+  }
+  .marquee-container {
+    animation: marquee 60s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

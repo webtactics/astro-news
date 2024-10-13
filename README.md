@@ -1,47 +1,49 @@
-# Astro Starter Kit: Minimal
+# Astro News
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Astro News is a simple, customizable, free and open-source Astro blog template built with TailwindCSS and Keystatic.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+- 💨 **Fast Performance**: Built using [Astro](https://astro.build/) and [Bun](https://bun.sh/) for optimized speed.
+- 📝 **Markdown-Based Content**: Simple and intuitive content creation with Markdown support.
+- 🔍 **Search Functionality**: Seamless site search powered by [Pagefind](https://github.com/CloudCannon/pagefind).
+- 📱 **Responsive Design**: Ensures a flawless experience across all devices.
+- 📦 **SEO-Friendly**: Optimized for search engines right out of the box.
+- 🖼️ **Automatic OG Image Generation**: Automatically generates Open Graph images for improved social sharing.
+- 💅 **Highly Customizable**: Easily adapt the theme to your brand and style.
+- 🛠️ **Easy Content Management**: Streamlined management with [Keystatic](https://keystatic.dev/).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Demo
 
-## 🚀 Project Structure
+📌 https://*******.vercel.app/
 
-Inside of your Astro project, you'll see the following folders and files:
+## Getting Started
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+### Project Structure
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Configuration
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Keystatic
 
-## 🧞 Commands
+### Deployment
 
-All commands are run from the root of the project, from a terminal:
+## Technologies
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- [Astro](https://astro.build/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React](https://reactjs.org/)
+- [Keystatic](https://keystatic.dev/)
+- [Pagefind](https://github.com/CloudCannon/pagefind)
+- [Bun](https://bun.sh/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-## 👀 Want to learn more?
+### Fonts
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Inter (sans-serif)](https://fonts.google.com/specimen/Inter)
+- [Source Serif 4 (serif)](https://fonts.google.com/specimen/Source+Serif+4)
+
+### Inspirations
+
+- [Spot Design](https://spot.design/)
+
+## License

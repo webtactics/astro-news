@@ -1,0 +1,19 @@
+---
+import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/inter';
+import { SITE } from "constants.ts";
+import Head from "@components/bases/head.astro";
+import Header from "@components/shared/header.astro";
+import Footer from "@components/shared/footer.astro";
+---
+<!DOCTYPE html>
+<html lang={SITE.lang} dir={SITE.dir}>
+  <Head/>
+  <body class="flex flex-col gap-4">
+    <Header/>
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer/>
+  </body>
+</html>
