@@ -1,0 +1,32 @@
+---
+import CircleFilled from "@assets/svgs/circle-filled.astro";
+import { Image } from "astro:assets";
+import { SITE } from "lib/consts";
+---
+
+<article class="col-span-1 max-w-sm mx-auto group">
+  <a href="#" class="flex flex-col gap-2">
+    <div class="overflow-hidden rounded-md">
+      <Image
+        src={SITE.placeholder_image}
+        alt="News 1"
+        width="360"
+        height="360"
+        loading={"lazy"}
+        format="webp"
+        class={"w-full h-full object-cover rounded-md group-hover:scale-105 transition-all duration-200"}
+      />
+    </div>
+    <div class="flex-1 flex flex-col gap-1 p-2 h-full">
+      <h3 class="text-xl">Title</h3>
+      <p class="text-sm line-clamp-4 text-stone-600 flex-1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
+      </p>
+      <div class="flex items-center gap-1 mt-2">
+        <small class="font-bold">Politic</small>
+        <span><CircleFilled size={10} color="bg-accent" /></span>
+        <small>2 min read</small>
+      </div>
+    </div>
+  </a>
+</article>

@@ -1,30 +1,49 @@
 ---
 import CircleFilled from "@assets/svgs/circle-filled.astro";
+import Time04 from "@assets/svgs/time-04.astro";
+import { getDateDistance } from "@utils/getDateDistance";
 import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+import { SITE } from "lib/consts";
+
+type Props = CollectionEntry<"articles">;
+const { data, slug } = Astro.props;
+
+const category: CollectionEntry<"categories"> = await getEntry(
+  "categories",
+  data.category.id
+);
 ---
 
-<li>
-  <a href="#">
+<li class="w-full">
+  <a href={`/news/${slug}`} class="w-full">
     <article class="flex gap-2">
       <div class="shrink-0 border rounded-md overflow-hidden">
         <Image
-          src={"/assets/images/news-1.jpg"}
+          src={data.cover ?? SITE.placeholder_image}
           alt="News 1"
-          width="200"
-          height="100"
+          width="150"
+          height="80"
+          loading={"lazy"}
+          format="webp"
+          class={"w-full h-full object-cover rounded-md"}
         />
       </div>
-      <div class="flex-1 flex flex-col gap-0.5">
-        <time class="text-xs text-slate-500">3 days ago</time>
+      <div class="flex-1 flex flex-col gap-1 py-1">
+        <time class="text-xs text-stone-500 inline-flex items-center gap-1"
+          ><Time04 size={15} />{getDateDistance(data.published_time)}</time
+        >
         <div class="flex-1">
-          <h3 class="line-clamp-2 text-slate-800">
-            Title 1 Title 1 Title 1 Title 1 Title 1 Title 1 Title 1 Title 1
-            Title 1 Title 1 Title 1 Title 1 Title 1 Title 1 Title 1 Title 1
+          <h3 class="line-clamp-2 text-stone-800">
+            {data.title}
           </h3>
         </div>
         <p class="text-base inline-flex items-center gap-1">
-          <small class="font-bold">Politic</small>
-          <span class="text-slate-200"><CircleFilled size="10" /></span>
+          <small class="font-bold text-[var(--green-500)]"
+            >{category.data.name}</small
+          >
+          <span class="text-stone-200"><CircleFilled size={10} /></span>
           <small>2 min read</small>
         </p>
       </div>

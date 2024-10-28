@@ -1,0 +1,8 @@
+{
+  "name": "john-doe",
+  "avatar": "",
+  "links": [{
+    "twitter": "https://twitter.com/john-doe",
+    "instagram" : "https://instagram.com/john-doe"
+  }]
+}

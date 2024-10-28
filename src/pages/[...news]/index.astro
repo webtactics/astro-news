@@ -1,0 +1,28 @@
+---
+import ContentLayout from "@layouts/content-layout.astro";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const articles = await getCollection(
+    "articles",
+    ({ data }) => !data.is_draft
+  );
+
+  return articles.flatMap((article) => ({
+    params: {
+      news: `news/${article.slug}`,
+    },
+    props: {
+      article,
+    },
+  }));
+};
+
+const { article } = Astro.props;
+
+const { Content } = await article.render();
+---
+
+<ContentLayout title={article.id}>
+  <Content />
+</ContentLayout>

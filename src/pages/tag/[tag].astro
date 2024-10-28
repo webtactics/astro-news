@@ -1,0 +1,45 @@
+---
+import ListLayout from "@layouts/list-layout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { getArticlesByTag } from "@utils/getArtcilesByTag";
+import { getArticles } from "@utils/getArticles";
+import WideCard from "@components/shared/wide-card.astro";
+
+type Props = {
+  articles: CollectionEntry<"articles">[];
+  tag: string;
+};
+
+export const getStaticPaths = async () => {
+  const articles = await getArticles();
+  const tags = await getCollection("tags");
+
+  return tags.map((tag) => {
+    return {
+      params: { tag: tag.id },
+      props: { articles: getArticlesByTag(articles, tag.id) },
+    };
+  });
+};
+
+const { tag } = Astro.params;
+const { articles } = Astro.props;
+---
+
+<ListLayout title={tag}>
+  <section class="md:px-8">
+    <ul class="space-y-8">
+      {
+        articles.map((article, index: number) => {
+          return (
+            <WideCard
+              article={article}
+              isLast={index + 1 === articles.length}
+            />
+          );
+        })
+      }
+    </ul>
+  </section>
+</ListLayout>

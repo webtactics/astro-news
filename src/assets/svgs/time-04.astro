@@ -1,0 +1,37 @@
+---
+import type { Svg } from "@lib/types";
+
+type Props = Svg;
+
+const {
+  width = 20,
+  height = 20,
+  size,
+  strokeWidth = 1.5,
+  color = "currentColor",
+  ...rest
+} = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  width={size ? size : width}
+  height={size ? size : height}
+  color={color}
+  fill="none"
+  {...rest}
+>
+  <circle
+    cx="12"
+    cy="12"
+    r="10"
+    stroke="currentColor"
+    stroke-width={strokeWidth}></circle>
+  <path
+    d="M9.5 9.5L12.9999 12.9996M16 8L11 13"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+</svg>

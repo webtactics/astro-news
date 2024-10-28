@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import type { Author } from "@lib/types";
+
+type Props = Author;
+
+const { name, slug, avatar } = Astro.props;
+---
+
+<a href="#" class="flex gap-4 items-center group">
+  <div class="avatar">
+    <div class="w-24 rounded-full">
+      <Image
+        src={avatar}
+        alt={name}
+        width={192}
+        height={192}
+        class="w-full h-full object-cover"
+      />
+    </div>
+  </div>
+  <div>
+    <h3 class="capitalize font-sans font-semibold">{name}</h3>
+    <small class="">10 Articles</small>
+  </div>
+</a>

@@ -1,0 +1,22 @@
+---
+import Head from "@components/bases/head.astro";
+import Footer from "@components/shared/footer.astro";
+import Header from "@components/shared/header.astro";
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light" class="h-full">
+  <Head title={title} />
+  <body class="flex flex-col h-full antialiased font-sans">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

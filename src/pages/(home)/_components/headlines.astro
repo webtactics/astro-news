@@ -1,13 +1,32 @@
 ---
 import HeadlineSmallItem from "./_elements/headline-small-item.astro";
+import HeadlineBigItem from "./_elements/headline-big-item.astro";
+import { getCollection } from "astro:content";
+
+const headlinesList = (
+  await getCollection("articles", ({ data }) => {
+    return (
+      data.is_important &&
+      !data.is_draft &&
+      new Date(data.published_time) <= new Date()
+    );
+  })
+)
+  .sort((a, b) => b.data.published_time.localeCompare(a.data.published_time))
+  .slice(0, 5);
+
+console.log(headlinesList.length);
 ---
 
-<section class="container grid grid-cols-3 gap-4 mb-16">
-  <div class="col-span-2 aspect-[20/9] border">x</div>
-  <ul class="col-span-1 flex flex-col justify-between gap-1">
-    <HeadlineSmallItem />
-    <HeadlineSmallItem />
-    <HeadlineSmallItem />
-    <HeadlineSmallItem />
+<section class="container grid grid-cols-1 lg:grid-cols-3 lg:gap-4 mb-16">
+  <HeadlineBigItem data={headlinesList[0].data} slug={headlinesList[0].slug} />
+  <ul
+    class="col-span-1 flex flex-col justify-between gap-2 w-full mt-44 lg:mt-0"
+  >
+    {
+      headlinesList
+        .slice(1, 5)
+        .map((item) => <HeadlineSmallItem data={item.data} slug={item.slug} />)
+    }
   </ul>
 </section>
