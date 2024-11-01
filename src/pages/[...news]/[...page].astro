@@ -2,6 +2,8 @@
 import ListLayout from "@layouts/list-layout.astro";
 import type { GetStaticPaths } from "astro";
 import { getArticles } from "@utils/getArticles";
+import Pagination from "@components/shared/pagination.astro";
+import WideCard from "@components/shared/wide-card.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const articles = await getArticles();
@@ -14,18 +16,25 @@ const { page } = Astro.props;
 const articles = page.data;
 ---
 
+
 <ListLayout title={"News"}>
   <section class="md:px-8">
     <ul class="space-y-8">
       {
-        articles.map((article) => {
+        articles.map((article, index:number) => {
           return (
-            <li>
-              <a href={`news/${article.slug}`}>{article.data.title}</a>
-            </li>
+          <WideCard article={article} isLast={index + 1 === articles.length}/>
           );
         })
       }
     </ul>
   </section>
+  <div class="container">
+    <Pagination
+        prevUrl={page.url.prev}
+        nextUrl={page.url.next}
+        prevText="Newest"
+        nextText="Older"
+    />
+  </div>
 </ListLayout>

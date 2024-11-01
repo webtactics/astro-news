@@ -7,12 +7,16 @@ import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 import { getDateDistance } from "@utils/getDateDistance";
 
-type Props = CollectionEntry<"articles">;
-const { data, slug } = Astro.props;
+type Props = {
+  data: CollectionEntry<"articles">;
+};
+const { data } = Astro.props;
 
-const category: CollectionEntry<"categories"> = await getEntry(
+const { title, description, category, published_time } = data.data;
+
+const categoryName: CollectionEntry<"categories"> = await getEntry(
   "categories",
-  data.category.id
+  category.id
 );
 ---
 
@@ -33,18 +37,18 @@ const category: CollectionEntry<"categories"> = await getEntry(
   >
     <div class="flex-1 flex flex-col gap-2">
       <time class="text-xs text-stone-500 inline-flex items-center gap-1"
-        ><Time04 size={16} />{getDateDistance(data.published_time)}</time
+        ><Time04 size={16} />{getDateDistance(published_time)}</time
       >
       <div class="flex-1 space-y-4">
         <h3 class="line-clamp-4 text-stone-800 text-xl">
-          {data.title}
+          {title}
         </h3>
         <p class="text-stone-500 text-sm line-clamp-4">
           <span class="line-clamp-3">
-            {data.description}
+            {description}
           </span>
           <a
-            href={`/news/${slug}`}
+            href={`/news/${data.slug}`}
             class="text-sm inline-flex mt-2 text-stone-600 font-semibold"
             >Read more</a
           >
@@ -52,7 +56,7 @@ const category: CollectionEntry<"categories"> = await getEntry(
       </div>
       <p class="text-base inline-flex items-center gap-1">
         <small class="font-bold text-[var(--green-500)]"
-          >{category.data.name}</small
+          >{categoryName.data.name}</small
         >
         <span class="text-stone-200"><CircleFilled size={10} /></span>
         <small>2 min read</small>

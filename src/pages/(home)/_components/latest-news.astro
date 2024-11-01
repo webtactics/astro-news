@@ -1,14 +1,19 @@
 ---
 import SectionTitle from "@components/elements/section-title.astro";
 import NewsCard from "@components/shared/news-card.astro";
+import { getArticles } from "@utils/getArticles";
+
+const articles = await getArticles({limit: 4, sortByDate: true})
+
 ---
 
-<section class="container space-y-4 mb-16">
+<section class="container space-y-4 mb-12">
   <SectionTitle title="Latest News" path="/news" />
   <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-    <NewsCard />
-    <NewsCard />
-    <NewsCard />
-    <NewsCard />
+    {
+    articles.map((article) => (
+    <NewsCard article={article} />
+    ))
+    }
   </div>
 </section>
