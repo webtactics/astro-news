@@ -1,18 +1,37 @@
 ---
 import { Image } from "astro:assets";
-import type { Author } from "@lib/types";
+import type { CollectionEntry } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 
-type Props = Author;
+type Props = {
+  author: CollectionEntry<"authors">;
+};
 
-const { name, slug, avatar } = Astro.props;
+const { author } = Astro.props;
+
+// No need to get the author entry again, as it's already passed as a prop
+if (!author) {
+  throw new Error(`Author not provided`);
+}
+
+// Get all articles
+const allArticles = await getCollection("articles");
+
+// Filter articles by author
+const authorArticles = allArticles.filter(article =>
+  article.data.authors.some(authorRef => authorRef.id === author.id)
+);
+
+const authorEntry = await getEntry("authors", author.id);
+
 ---
 
-<a href="#" class="flex gap-4 items-center group">
+<a href={`/author/${author.id}`} class="flex gap-4 items-center group">
   <div class="avatar">
     <div class="w-24 rounded-full">
       <Image
-        src={avatar}
-        alt={name}
+        src={authorEntry.data.avatar}
+        alt={authorEntry.data.name}
         width={192}
         height={192}
         class="w-full h-full object-cover"
@@ -20,7 +39,7 @@ const { name, slug, avatar } = Astro.props;
     </div>
   </div>
   <div>
-    <h3 class="capitalize font-sans font-semibold">{name}</h3>
-    <small class="">10 Articles</small>
+    <h3 class="capitalize font-sans font-semibold">{authorEntry.data.name}</h3>
+    <small class="">{authorArticles.length} Article{authorArticles.length !== 1 ? 's' : ''}</small>
   </div>
 </a>

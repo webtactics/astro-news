@@ -5,6 +5,8 @@ type GetArticlesParams = {
   publishedBeforeNow?: boolean;
   sortByDate?: boolean;
   limit?: number;
+  is_in_headline?: boolean;
+  is_in_news_ticker?: boolean;
 };
 
 export const getArticles = async (params: GetArticlesParams = {}) => {
@@ -13,6 +15,8 @@ export const getArticles = async (params: GetArticlesParams = {}) => {
     sortByDate = false,
     publishedBeforeNow = false,
     limit,
+    is_in_headline,
+    is_in_news_ticker,
   } = params;
 
   const articles: CollectionEntry<"articles">[] = (
@@ -21,7 +25,18 @@ export const getArticles = async (params: GetArticlesParams = {}) => {
     const isNotDraft = includeDrafts || !item.data.is_draft;
     const isBeforeNow =
       !publishedBeforeNow || new Date(item.data.published_time) <= new Date();
-    return isNotDraft && isBeforeNow;
+
+    // Check if the article is in headline if is_in_headline is specified
+    const isInHeadline =
+      is_in_headline === undefined ||
+      item.data.is_in_headline === is_in_headline;
+
+    // Check if the article is in the news ticker if is_in_news_ticker is specified
+    const isInNewsTicker =
+      is_in_news_ticker === undefined ||
+      item.data.is_in_news_ticker === is_in_news_ticker;
+
+    return isNotDraft && isBeforeNow && isInHeadline && isInNewsTicker;
   });
 
   if (sortByDate) {

@@ -5,7 +5,8 @@ import { getArticles } from "@utils/getArticles";
 
 const headlinesList = await getArticles({
   limit: 5,
-  sortByDate: true
+  sortByDate: true,
+  is_in_headline: true,
 });
 ---
 

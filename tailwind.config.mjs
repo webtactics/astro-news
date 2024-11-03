@@ -21,5 +21,5 @@ export default {
     themes: ["light", "dark"],
     logs: false,
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
 };

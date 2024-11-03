@@ -1,12 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import NewsTickerItem from "@components/elements/news-ticker-item.astro";
-const newsTickerList = await getCollection("articles", ({ data }) => {
-  return (
-    data.is_important &&
-    !data.is_draft &&
-    new Date(data.published_time) <= new Date()
-  );
+import { getArticles } from "@utils/getArticles";
+const newsTickerList = await getArticles({
+  is_in_news_ticker: true,
+  limit: 6,
+  sortByDate: true,
 });
 ---
 

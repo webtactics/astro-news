@@ -1,13 +1,20 @@
+import { loadEnv } from "vite";
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
+import mdx from "@astrojs/mdx";
+import keystatic from "@keystatic/astro";
 
-import tailwind from '@astrojs/tailwind';
-
-import react from '@astrojs/react';
-
-import mdx from '@astrojs/mdx';
+const { RUN_KEYSTATIC } = loadEnv(import.meta.env.MODE, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), mdx()]
+  integrations: [
+    tailwind(),
+    react(),
+    mdx(),
+    ...(RUN_KEYSTATIC === "true" ? [keystatic()] : []),
+  ],
+  output: "hybrid",
 });

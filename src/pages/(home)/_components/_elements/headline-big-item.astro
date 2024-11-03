@@ -2,7 +2,6 @@
 import CircleFilled from "@assets/svgs/circle-filled.astro";
 import { Image } from "astro:assets";
 import Time04 from "@assets/svgs/time-04.astro";
-import NewsPark from "@assets/images/news-park.jpg";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 import { getDateDistance } from "@utils/getDateDistance";
@@ -12,7 +11,7 @@ type Props = {
 };
 const { data } = Astro.props;
 
-const { title, description, category, published_time } = data.data;
+const { title, description, category, published_time, cover_image, cover_image_alt } = data.data;
 
 const categoryName: CollectionEntry<"categories"> = await getEntry(
   "categories",
@@ -23,8 +22,8 @@ const categoryName: CollectionEntry<"categories"> = await getEntry(
 <div class="col-span-2 flex items-end justify-end relative h-full">
   <div class="w-full lg:w-10/12 h-full bg-stone-100 rounded-md overflow-hidden">
     <Image
-      src={NewsPark}
-      alt="News 1"
+      src={cover_image}
+      alt={cover_image_alt}
       width="750"
       height="500"
       loading={"lazy"}

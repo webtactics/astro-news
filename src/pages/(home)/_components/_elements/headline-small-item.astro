@@ -12,7 +12,7 @@ type Props = {
 };
 const { data } = Astro.props;
 
-const {title, description, category, published_time, cover} = data.data;
+const {title, description, category, published_time, cover_image, cover_image_alt} = data.data;
 
 const categoryName: CollectionEntry<"categories"> = await getEntry(
   "categories",
@@ -25,8 +25,8 @@ const categoryName: CollectionEntry<"categories"> = await getEntry(
     <article class="flex gap-2">
       <div class="shrink-0 border rounded-md overflow-hidden">
         <Image
-          src={cover ?? SITE.placeholder_image}
-          alt="News 1"
+          src={cover_image ?? SITE.placeholder_image}
+          alt={cover_image_alt}
           width="150"
           height="80"
           loading={"lazy"}

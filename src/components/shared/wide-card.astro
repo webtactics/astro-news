@@ -29,11 +29,11 @@ const { article, isLast } = Astro.props;
     >
       <div class="w-full md:w-60 aspect-video">
         <Image
-          src={article.data.cover}
-          alt={article.data.cover_alt}
-          widths={[360, 768, article.data.cover.width]}
+          src={article.data.cover_image}
+          alt={article.data.cover_image_alt}
+          widths={[360, 768, article.data.cover_image.width]}
           loading="lazy"
-          sizes={`(max-width: 360px) 360px, (max-width: 768px) 768px, (max-width: 1600px) 360px, ${article.data.cover.width}px`}
+          sizes={`(max-width: 360px) 360px, (max-width: 768px) 768px, (max-width: 1600px) 360px, ${article.data.cover_image.width}px`}
           class="aspect-video rounded w-full h-full"
         />
       </div>
@@ -57,9 +57,7 @@ const { article, isLast } = Astro.props;
           </span>
           <span>
             {
-              formatDistanceToNow(parseISO(article.data.published_time), {
-                addSuffix: true,
-              })
+              getDateDistance(article.data.published_time)
             }
           </span>
         </time>

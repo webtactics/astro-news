@@ -1,45 +1,37 @@
 ---
 import SectionTitle from "@components/elements/section-title.astro";
-import type { Author } from "@lib/types";
 import AuthorItem from "@components/elements/author-item.astro";
+import { getCollection } from "astro:content";
+import { getArticles } from "@utils/getArticles";
 
-const top_authors: Author[] = [
-  {
-    name: "John Doe",
-    slug: "/authors/author-1",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Jim Doe",
-    slug: "/authors/author-2",
-    avatar:
-      "https://plus.unsplash.com/premium_photo-1671656349218-5218444643d8?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Jane Doe",
-    slug: "/authors/author-3",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Chris Doe",
-    slug: "/authors/author-4",
-    avatar:
-      "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Nick Doe",
-    slug: "/authors/author-5",
-    avatar:
-      "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=1889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
+const articles = await getArticles();
+// Create a map to store unique authors and their post counts
+const authorMap = new Map();
+
+// Count posts for each author and store unique authors
+articles.forEach((article) => {
+  article.data.authors.forEach((author) => {
+    if (authorMap.has(author.id)) {
+      authorMap.get(author.id).postCount += 1;
+    } else {
+      authorMap.set(author.id, { ...author, postCount: 1 });
+    }
+  });
+});
+
+// Convert the map to an array and sort by post count
+const sortedAuthors = Array.from(authorMap.values())
+  .sort((a, b) => b.postCount - a.postCount);
+
+// Optionally, limit to top N authors
+const topAuthors = sortedAuthors.slice(0, 5);
 ---
 
 <section class="container">
   <SectionTitle title="Top Authors" path="/authors" />
   <div class="grid grid-cols-2 gap-4 lg:grid-cols-5 justify-between">
-    {top_authors.map((author: Author) => <AuthorItem {...author} />)}
+    {topAuthors.map((author) => (
+      <AuthorItem author={author} />
+    ))}
   </div>
 </section>

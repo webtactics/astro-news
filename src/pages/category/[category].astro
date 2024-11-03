@@ -2,9 +2,9 @@
 import ListLayout from "@layouts/list-layout.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { getArticlesByTag } from "@utils/getArtcilesByTag";
 import { getArticles } from "@utils/getArticles";
 import WideCard from "@components/shared/wide-card.astro";
+import { getArticlesByCategory } from "@utils/getArtcilesByCategory";
 
 type Props = {
   articles: CollectionEntry<"articles">[];
@@ -17,14 +17,15 @@ export const getStaticPaths = async () => {
 
   return categories.map((category) => {
     return {
-      params: { category: category.id },
-      props: { articles: getArticlesByTag(articles, category.id) },
+      params: { category: category.data.path },
+      props: { articles: getArticlesByCategory(articles, category.data.path) },
     };
   });
 };
 
 const { category } = Astro.params;
 const { articles } = Astro.props;
+
 ---
 
 <ListLayout title={category}>

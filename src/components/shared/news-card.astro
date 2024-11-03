@@ -18,8 +18,8 @@ const category = await getEntry("categories", article.data.category.id)
   <a href="#" class="flex flex-col gap-2">
     <div class="overflow-hidden rounded-md">
       <Image
-        src={article.data.cover ?? SITE.placeholder_image}
-        alt="News 1"
+        src={article.data.cover_image ?? SITE.placeholder_image}
+        alt={article.data.cover_image_alt}
         width="360"
         height="360"
         loading={"lazy"}

@@ -1,8 +1,14 @@
 {
-  "name": "john-doe",
-  "avatar": "",
-  "links": [{
-    "twitter": "https://twitter.com/john-doe",
-    "instagram" : "https://instagram.com/john-doe"
-  }]
+  "name": "john doe",
+  "avatar": "../../assets/images/news-placeholder.jpg",
+  "links": [
+    {
+      "title": "Website",
+      "href": "https://example.com"
+    },
+    {
+      "title": "Twitter",
+      "href": "https://twitter.com/john_doe"
+    }
+  ]
 }

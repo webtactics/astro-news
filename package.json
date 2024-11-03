@@ -3,13 +3,16 @@
   "version": "0.0.1",
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^3.1.8",
+    "@astrojs/mdx": "^3.1.9",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.2",
-    "@types/react": "^18.3.11",
+    "@keystatic/astro": "^5.0.3",
+    "@keystatic/core": "^0.5.39",
+    "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "astro": "^4.16.6",
     "date-fns": "^4.1.0",
+    "install": "^0.13.0",
     "inter-ui": "^4.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -25,6 +28,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "daisyui": "^4.12.13"
   }
 }
