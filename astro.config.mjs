@@ -5,16 +5,20 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import keystatic from "@keystatic/astro";
+import {remarkReadingTime} from "./src/utils/remark-reading-time.mjs";
+import {remarkModifiedTime} from "./src/utils/remark-modified-time.mjs";
 
 const { RUN_KEYSTATIC } = loadEnv(import.meta.env.MODE, process.cwd(), "");
 
-// https://astro.build/config
 export default defineConfig({
+  output: "hybrid",
+  markdown: {
+    remarkPlugins: [remarkReadingTime, remarkModifiedTime],
+  },
   integrations: [
     tailwind(),
     react(),
     mdx(),
     ...(RUN_KEYSTATIC === "true" ? [keystatic()] : []),
   ],
-  output: "hybrid",
 });

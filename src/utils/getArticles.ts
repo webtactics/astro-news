@@ -12,7 +12,7 @@ type GetArticlesParams = {
 export const getArticles = async (params: GetArticlesParams = {}) => {
   const {
     includeDrafts = false,
-    sortByDate = false,
+    sortByDate = true,
     publishedBeforeNow = false,
     limit,
     is_in_headline,
@@ -47,3 +47,11 @@ export const getArticles = async (params: GetArticlesParams = {}) => {
 
   return limit ? articles.slice(0, limit) : articles;
 };
+
+export const getArticlesByTag = (articles: CollectionEntry<"articles">[], tag: string) => {
+  return articles.filter((article) => article.data.tags.some((t) => t.id === tag));
+}
+
+export const getArticlesByCategory = (articles: CollectionEntry<"articles">[], category: string) => {
+  return articles.filter((article) => article.data.category.id === category);
+}
