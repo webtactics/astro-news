@@ -1,12 +1,12 @@
 ---
+import type { Meta } from "@lib/types";
 import BaseLayout from "./base-layout.astro";
-type Props = {
-  title: string;
-};
-const { title } = Astro.props;
+type Props = Meta & {};
+
+const { ...meta } = Astro.props;
 ---
 
-<BaseLayout title={title}>
+<BaseLayout {...meta}>
   <article class="container py-2 md:py-8">
     <slot />
   </article>

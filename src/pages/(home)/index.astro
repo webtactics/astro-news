@@ -4,9 +4,17 @@ import BaseLayout from "@layouts/base-layout.astro";
 import Headlines from "./_components/headlines.astro";
 import LatestNews from "./_components/latest-news.astro";
 import TopAuthors from "./_components/top-authors.astro";
+import type { Meta } from "@lib/types";
+
+const meta: Meta = {
+  title: "News",
+  description: "A news website built with Astro",
+  og_image: "https://astro.build/social/banner.jpg",
+  tags: [{ name: "Astro News", path: "news" }],
+};
 ---
 
-<BaseLayout title="Welcome to Astro.">
+<BaseLayout {...meta}>
   <div class="pt-4">
     <NewsTicker />
     <Headlines />

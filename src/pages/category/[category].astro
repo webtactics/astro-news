@@ -5,6 +5,7 @@ import type { CollectionEntry } from "astro:content";
 import { getArticles } from "@utils/getArticles";
 import WideCard from "@components/shared/wide-card.astro";
 import { getArticlesByCategory } from "@utils/getArticles";
+import type { Meta } from "@lib/types";
 
 type Props = {
   articles: CollectionEntry<"articles">[];
@@ -25,9 +26,16 @@ export const getStaticPaths = async () => {
 
 const { category } = Astro.params;
 const { articles } = Astro.props;
+
+const meta: Meta = {
+  title: "News",
+  description: "A news website built with Astro",
+  og_image: "https://astro.build/social/banner.jpg",
+  tags: [{ name: "Astro News", path: "news" }],
+};
 ---
 
-<ListLayout title={category}>
+<ListLayout {...meta}>
   <section class="md:px-8">
     <ul class="space-y-8">
       {
