@@ -1,27 +1,19 @@
-import { loadEnv } from "vite";
 // @ts-check
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import react from "@astrojs/react";
-import mdx from "@astrojs/mdx";
-import keystatic from "@keystatic/astro";
-import {remarkReadingTime} from "./src/utils/remark-reading-time.mjs";
-import {remarkModifiedTime} from "./src/utils/remark-modified-time.mjs";
 import { SITE } from "./src/lib/consts";
+import sitemap from "@astrojs/sitemap";
+import { modifiedTime, readingTime } from "./src/utils/remarks.mjs";
 
-const { RUN_KEYSTATIC } = loadEnv(import.meta.env.MODE, process.cwd(), "");
+import mdx from "@astrojs/mdx";
 
+// https://astro.build/config
 export default defineConfig({
   site: SITE.origin,
-  base: SITE.basePathname,
+  base: SITE.basePath,
   output: "hybrid",
+  trailingSlash: "never",
   markdown: {
-    remarkPlugins: [remarkReadingTime, remarkModifiedTime],
+    remarkPlugins: [readingTime, modifiedTime]
   },
-  integrations: [
-    tailwind(),
-    react(),
-    mdx(),
-    ...(RUN_KEYSTATIC === "true" ? [keystatic()] : []),
-  ],
+  integrations: [sitemap(), mdx()],
 });

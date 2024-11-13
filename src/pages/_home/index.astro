@@ -1,0 +1,25 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from "@layouts/base.astro";
+import { MetaGenerator } from "@utils/metaGenerator";
+
+const entry = await getEntry("pages", "home");
+
+if (entry === undefined) {
+  return Astro.redirect("/articles");
+}
+
+const [newsTicker, headlines, latestNews, topAuthors] = entry.data.blocks;
+
+const metedata = await MetaGenerator(entry);
+---
+
+<BaseLayout {...metedata}>
+  <h2>{newsTicker.title}</h2>
+
+  <h2>{headlines.name}</h2>
+
+  <h2>{latestNews.name}</h2>
+
+  <h2>{topAuthors.name}</h2>
+</BaseLayout>
