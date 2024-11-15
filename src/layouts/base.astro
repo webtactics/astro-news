@@ -2,15 +2,21 @@
 import Head from "@components/bases/head.astro";
 import { SITE } from "@lib/consts";
 import type { ArticleMeta, Meta } from "@lib/types";
+import Header from "@components/shared/header.astro";
+import Footer from "@components/shared/footer.astro";
 
 type Props = ArticleMeta | Meta;
 
 const props = Astro.props;
 ---
 
-<html lang={SITE.location} dir={SITE.dir}>
+<html lang={SITE.location} dir={SITE.dir} class="h-full">
   <Head {...props} />
-  <body>
-    <slot />
+  <body class="flex flex-col flex-1 h-full">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

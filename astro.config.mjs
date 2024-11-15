@@ -6,6 +6,8 @@ import { modifiedTime, readingTime } from "./src/utils/remarks.mjs";
 
 import mdx from "@astrojs/mdx";
 
+import tailwind from "@astrojs/tailwind";
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.origin,
@@ -15,5 +17,5 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [readingTime, modifiedTime]
   },
-  integrations: [sitemap(), mdx()],
+  integrations: [sitemap(), mdx(), tailwind()],
 });
