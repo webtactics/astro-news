@@ -1,0 +1,9 @@
+---
+import { articlesHandler } from "@utils/handlers/articlesHandler";
+
+const BigHeadlineArticle = await articlesHandler.getBigHeadlineArticle();
+---
+
+<div class="col-span-1 md:col-span-8 border rounded">
+  {BigHeadlineArticle.data.title}
+</div>

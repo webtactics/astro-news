@@ -1,0 +1,24 @@
+---
+import { articlesHandler } from "@utils/handlers/articlesHandler";
+import HeadlineSmall from "./_elements/headline-small.astro";
+import HeadlineBig from "./_elements/headline-big.astro";
+
+type Props = {
+  count_small: number;
+};
+const { count_small } = Astro.props;
+
+const SmallHeadlineArticles =
+  await articlesHandler.getSmallHeadlineArticles(count_small);
+---
+
+<section class="container grid grid-cols-1 gap-4 md:grid-cols-12 py-6">
+  <HeadlineBig />
+  <div class="col-span-1 md:col-span-4 flex flex-col border rounded">
+    {
+      SmallHeadlineArticles.map((article) => (
+        <HeadlineSmall article={article} />
+      ))
+    }
+  </div>
+</section>

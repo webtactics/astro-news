@@ -28,6 +28,14 @@ export const articleSchema = (image: ImageFunction) => {
       .min(60, { message: "Description is too short" })
       .max(160, { message: "Description is too long" }),
 
+    isDraft: z.boolean().default(false),
+
+    isInNewsTicker: z.boolean().default(false),
+
+    isInHeadlines: z.boolean().default(false),
+
+    isBigItemHeadline: z.boolean().default(false),
+
     publishedAt: z
       .string()
       .or(z.date())

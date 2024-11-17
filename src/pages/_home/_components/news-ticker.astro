@@ -1,0 +1,66 @@
+---
+import { articlesHandler } from "@utils/handlers/articlesHandler";
+import NewsTickerItem from "./_elements/news-ticker-item.astro";
+
+type Props = {
+  small_title: string;
+  big_title: string;
+  count: number;
+};
+
+const { big_title, small_title, count } = Astro.props;
+
+const articles = await articlesHandler.getArticlesForNewsTicker(count);
+---
+
+<section class="container">
+  <div
+    class="bg-base-100 rounded-md relative h-10 overflow-hidden border border-base-content"
+  >
+    <h2
+      class="absolute left-0 top-0 h-full flex items-center justify-center z-10 px-2 border-r border-base-content bg-base-300"
+    >
+      <span class="md:hidden">{small_title}</span>
+      <span class="hidden md:block">{big_title}</span>
+    </h2>
+    <div
+      class="marquee-container flex w-[200%] h-full absolute overflow-hidden"
+    >
+      <ul class="flex w-full h-full items-center">
+        {
+          articles.map((article) => (
+            <NewsTickerItem title={article.data.title} path={article.slug} />
+          ))
+        }
+      </ul>
+      <ul class="flex w-full h-full items-center">
+        {
+          articles.map((article) => (
+            <NewsTickerItem title={article.data.title} path={article.slug} />
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-container {
+    animation: marquee 20s linear infinite;
+  }
+
+  @media (min-width: 768px) {
+    .marquee-container {
+      animation: marquee 45s linear infinite;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
