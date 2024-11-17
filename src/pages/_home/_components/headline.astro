@@ -14,10 +14,13 @@ const SmallHeadlineArticles =
 
 <section class="container grid grid-cols-1 gap-4 md:grid-cols-12 py-6">
   <HeadlineBig />
-  <div class="col-span-1 md:col-span-4 flex flex-col border rounded">
+  <div class="col-span-1 md:col-span-4 flex flex-col gap-4">
     {
-      SmallHeadlineArticles.map((article) => (
-        <HeadlineSmall article={article} />
+      SmallHeadlineArticles.map((article, index) => (
+        <HeadlineSmall
+          article={article}
+          isLast={index === SmallHeadlineArticles.length - 1}
+        />
       ))
     }
   </div>
