@@ -1,6 +1,8 @@
 ---
 import { getDateDistance } from "@utils/getDateDistance";
 import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+import { undefined } from "astro:schema";
 
 type Props = {
   article: CollectionEntry<"articles">;
@@ -8,39 +10,41 @@ type Props = {
 };
 const { article, isLast } = Astro.props;
 const { remarkPluginFrontmatter } = await article.render();
+
+const category = await getEntry("categories", article.data.category.id);
 ---
 
 <a
   class:list={[
-    "flex gap-2 border-b",
+    "flex item-center gap-2 border-b group",
     !isLast ? "border-b pb-2" : "border-b-0 pb-0",
   ]}
   href={`/articles/${article.slug}`}
 >
-  <!-- Image Section -->
   <div class="rounded-md bg-base-300 w-24 h-24"></div>
 
-  <!-- Content Section -->
   <div class="flex-1 flex flex-col">
-    <!-- Read Time -->
     <div>
+      <!-- TODO: add clock icon -->
       <span class="text-sm text-base-content/70">
         {remarkPluginFrontmatter.minutesRead}
       </span>
     </div>
 
-    <h3 class="text-base font-semibold flex-1 text-pretty">
+    <h3
+      class="text-base font-semibold flex-1 text-pretty group-hover:underline underline-offset-2 decoration-primary decoration-2 decoration-solid"
+    >
       {article.data.title}
     </h3>
 
-    <!-- Metadata -->
     <div class="flex items-center gap-2">
       <span class="text-xs text-base-content/70">
         {getDateDistance(article.data.publishedAt.toISOString())}
       </span>
       <div class="w-[1px] h-4 bg-base-content/20"></div>
-      <span class="text-xs text-base-content/70">
-        {article.data.category.id}
+      <span class="text-xs text-base-content/70 text-primary capitalize">
+        <!-- TODO: add category icon -->
+        {category ? category.data.name : "no category"}
       </span>
     </div>
   </div>

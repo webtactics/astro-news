@@ -47,4 +47,18 @@ export const articlesHandler = {
       );
     return articles.slice(0, count);
   },
+
+  getArticlesForLatestNews: async (count: number) => {
+    const articles = articlesCollection
+      .filter(
+        (article) =>
+           article.data.isDraft !== true
+      )
+      .sort((a, b) =>
+        b.data.publishedAt
+          .toISOString()
+          .localeCompare(a.data.publishedAt.toDateString())
+      ).slice(0, count);
+    return articles;
+  },
 };

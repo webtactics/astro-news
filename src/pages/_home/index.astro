@@ -4,6 +4,7 @@ import BaseLayout from "@layouts/base.astro";
 import { MetaGenerator } from "@utils/metaGenerator";
 import NewsTicker from "./_components/news-ticker.astro";
 import Headline from "./_components/headline.astro";
+import LatestNews from "./_components/latest-news.astro";
 
 const entry = await getEntry("pages", "home");
 
@@ -18,5 +19,11 @@ const metedata = await MetaGenerator(entry);
 
 <BaseLayout {...metedata}>
   <NewsTicker {...newsTicker} />
-  <Headline {...headlines} />
+  <Headline count={headlines.count} />
+  <LatestNews
+    name={latestNews.name}
+    link_path={latestNews.link.path}
+    link_text={latestNews.link.label}
+    count={latestNews.count}
+  />
 </BaseLayout>
