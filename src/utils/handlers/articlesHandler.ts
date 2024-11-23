@@ -3,6 +3,12 @@ import { getCollection } from "astro:content";
 const articlesCollection = await getCollection("articles");
 
 export const articlesHandler = {
+  getAllArticles: async () => {
+    const articles = articlesCollection.filter(
+      (article) => article.data.isDraft !== true
+    );
+    return articles;
+  },
   getArticlesForNewsTicker: async (count: number) => {
     const articles = articlesCollection
       .filter(
@@ -52,7 +58,7 @@ export const articlesHandler = {
     const articles = articlesCollection
       .filter(
         (article) =>
-           article.data.isDraft !== true
+          article.data.isDraft !== true
       )
       .sort((a, b) =>
         b.data.publishedAt

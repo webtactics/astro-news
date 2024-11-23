@@ -1,4 +1,4 @@
-import { defineCollection } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 import {
   articleSchema,
   authorSchema,
@@ -11,7 +11,6 @@ const articleCollection = defineCollection({
   type: "content",
   schema: ({ image }) => articleSchema(image),
 });
-
 const pageCollection = defineCollection({
   type: "content",
   schema: pageSchema(),

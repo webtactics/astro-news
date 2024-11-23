@@ -5,6 +5,7 @@ import { MetaGenerator } from "@utils/metaGenerator";
 import NewsTicker from "./_components/news-ticker.astro";
 import Headline from "./_components/headline.astro";
 import LatestNews from "./_components/latest-news.astro";
+import Authors from "./_components/authors.astro";
 
 const entry = await getEntry("pages", "home");
 
@@ -25,5 +26,11 @@ const metedata = await MetaGenerator(entry);
     link_path={latestNews.link.path}
     link_text={latestNews.link.label}
     count={latestNews.count}
+  />
+  <Authors
+    name={topAuthors.name}
+    link_path={topAuthors.link.path}
+    link_text={topAuthors.link.label}
+    count={topAuthors.count}
   />
 </BaseLayout>

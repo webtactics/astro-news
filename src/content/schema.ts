@@ -1,7 +1,6 @@
 import { z, reference, type ImageFunction } from "astro:content";
 
-export const pageSchema = () => {
-  return z.object({
+export const pageSchema = () => z.object({
     title: z.string({ message: "Title is required" }),
 
     description: z.string({ message: "Description is required" }),
@@ -14,10 +13,8 @@ export const pageSchema = () => {
 
     blocks: z.array(z.any()),
   });
-};
 
-export const articleSchema = (image: ImageFunction) => {
-  return z.object({
+export const articleSchema = (image: ImageFunction) => z.object({
     title: z
       .string({ message: "Meta Title is required" })
       .min(30, { message: "Title is too short" })
@@ -70,13 +67,10 @@ export const articleSchema = (image: ImageFunction) => {
 
     type: z.enum(["article"]),
   });
-};
 
-export const authorSchema = (image: ImageFunction) => {
-  return z.object({
+export const authorSchema = (image: ImageFunction) =>  z.object({
     name: z.string({ message: "Author Name is required" }),
     avatar: image(),
-    avatarAlt: z.string(),
     bio: z.string(),
     links: z
       .array(
@@ -87,20 +81,15 @@ export const authorSchema = (image: ImageFunction) => {
       )
       .optional(),
   });
-};
 
-export const tagSchema = (image: ImageFunction) => {
-  return z.object({
+export const tagSchema = (image: ImageFunction) =>  z.object({
     name: z.string({ message: "Tag Name is required" }),
-    icon: image(),
     path: z.string({ message: "Tag Path is required" }),
   });
-};
 
-export const categorySchema = (image: ImageFunction) => {
-  return z.object({
+
+export const categorySchema = (image: ImageFunction) =>  z.object({
     name: z.string({ message: "Category Name is required" }),
-    icon: image(),
     path: z.string({ message: "Category Path is required" }),
   });
-};
+
