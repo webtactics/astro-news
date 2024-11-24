@@ -17,17 +17,31 @@ type Props = {
 const { length, currentUrl, currentPage, firstUrl, prevUrl, nextUrl, lastUrl } =
   Astro.props;
 
-const paginationList = Array.from({ length }, (_, i) => i + 1);
+// Define the maximum number of visible buttons
+const maxVisibleButtons = 4;
+
+// Calculate the range of visible page numbers
+const startPage = Math.max(1, currentPage - Math.floor(maxVisibleButtons / 2));
+const endPage = Math.min(length, startPage + maxVisibleButtons - 1);
+
+// Adjust the startPage if we're at the end of the pagination
+const adjustedStartPage = Math.max(1, endPage - maxVisibleButtons + 1);
+
+// Generate the pagination list based on the range
+const paginationList = Array.from(
+  { length: endPage - adjustedStartPage + 1 },
+  (_, i) => adjustedStartPage + i
+);
 ---
 
 <nav class="join">
   {
     `${firstUrl}/1` == `${currentUrl}` ? (
-      <span class="join-item btn btn-disabled">
+      <span class="join-item btn btn-sm btn-disabled">
         <ArrowLeftDouble />
       </span>
     ) : (
-      <a href={`${firstUrl}/1`} class="join-item btn">
+      <a href={`${firstUrl}/1`} class="join-item btn btn-sm">
         <ArrowLeftDouble />
       </a>
     )
@@ -35,12 +49,12 @@ const paginationList = Array.from({ length }, (_, i) => i + 1);
 
   {
     prevUrl ? (
-      <a href={prevUrl} class="join-item btn">
-        <ArrowLeft01 /> Previous
+      <a href={prevUrl} class="join-item btn btn-sm">
+        <ArrowLeft01 /> <span class="hidden lg:block">Previous</span>
       </a>
     ) : (
-      <span class="join-item btn btn-disabled">
-        <ArrowLeft01 /> Previous
+      <span class="join-item btn btn-sm btn-disabled">
+        <ArrowLeft01 /> <span class="hidden lg:block">Previous</span>
       </span>
     )
   }
@@ -49,7 +63,7 @@ const paginationList = Array.from({ length }, (_, i) => i + 1);
     paginationList.map((num) => (
       <a
         href={`${firstUrl}${num == 1 ? "" : "/" + num}`}
-        class={`join-item btn ${currentPage == num ? "btn-active pointer-events-none" : ""}`}
+        class={`join-item btn btn-sm ${currentPage == num ? "btn-active pointer-events-none" : ""}`}
       >
         {num}
       </a>
@@ -58,23 +72,23 @@ const paginationList = Array.from({ length }, (_, i) => i + 1);
 
   {
     !nextUrl ? (
-      <span class="join-item btn btn-disabled">
-        Next <ArrowRight01 />
+      <span class="join-item btn btn-sm btn-disabled">
+        <span class="hidden lg:block">Next</span> <ArrowRight01 />
       </span>
     ) : (
-      <a href={nextUrl} class="join-item btn">
-        Next <ArrowRight01 />
+      <a href={nextUrl} class="join-item btn btn-sm">
+        <span class="hidden lg:block">Next</span> <ArrowRight01 />
       </a>
     )
   }
 
   {
     lastUrl == currentUrl ? (
-      <span class="join-item btn btn-disabled">
+      <span class="join-item btn btn-sm btn-disabled">
         <ArrowRightDouble />
       </span>
     ) : (
-      <a href={lastUrl} class="join-item btn">
+      <a href={lastUrl} class="join-item btn btn-sm">
         <ArrowRightDouble />
       </a>
     )
