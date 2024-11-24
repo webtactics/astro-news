@@ -9,8 +9,8 @@ type Props = {
   currentUrl: string;
   currentPage: number;
   firstUrl: string;
-  prevUrl: string;
-  nextUrl: string;
+  prevUrl: string | undefined;
+  nextUrl: string | undefined;
   lastUrl: string;
 };
 
@@ -59,11 +59,11 @@ const paginationList = Array.from({ length }, (_, i) => i + 1);
   {
     !nextUrl ? (
       <span class="join-item btn btn-disabled">
-        next <ArrowRight01 />
+        Next <ArrowRight01 />
       </span>
     ) : (
       <a href={nextUrl} class="join-item btn">
-        next <ArrowRight01 />
+        Next <ArrowRight01 />
       </a>
     )
   }
