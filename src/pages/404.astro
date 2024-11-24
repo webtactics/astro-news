@@ -1,5 +1,11 @@
 ---
-
+import BaseLayout from "../layouts/base.astro";
 ---
 
-<h1>404</h1>
+<BaseLayout>
+  <div class="container flex flex-col items-center justify-center py-20">
+    <h1 class="text-4xl">404 - Page Not Found</h1>
+    <p class="mt-2">Oops! The page you're looking for doesn't exist.</p>
+    <a href="/" class="btn mt-6">Return to Homepage</a>
+  </div>
+</BaseLayout>

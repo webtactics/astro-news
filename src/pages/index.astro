@@ -1,5 +1,9 @@
 ---
-import Home from "./_home/index.astro";
+import BaseLayout from "../layouts/base.astro";
 ---
 
-<Home />
+<BaseLayout>
+  <h1 class="lg:text-wrap">Welcome to Astro News!</h1>
+  <small>A news website built with Astro</small>
+  <time datetime="2023-01-01">January 1, 2023</time>
+</BaseLayout>

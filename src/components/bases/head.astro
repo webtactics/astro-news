@@ -1,99 +1,18 @@
 ---
-import "@styles/globals.css";
-import { SITE } from "@lib/consts";
-import type { ArticleMeta, Meta } from "@lib/types";
+import "@fontsource/source-sans-pro/400.css";
+import "@fontsource/source-sans-pro/700.css";
+import "@fontsource-variable/source-serif-4";
 
-type Props = ArticleMeta | Meta;
-
-const props = Astro.props;
-
-// Type guard to check if props is ArticleMeta
-const isArticleMeta = (props: Props): props is ArticleMeta =>
-  props.type === "article";
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
-const OGImage = new URL(props.image || SITE.defaultImage.src, Astro.url).href;
+import "~/assets/styles/globals.css";
+import { Site } from "~/lib/constants/config";
 ---
 
 <head>
-  <!-- Global Metadata -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="generator" content={Astro.generator} />
-
-  <!-- Favicon -->
+  <meta charset={Site.charset} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-  <!-- RSS & Sitemap & Robots -->
-  <link rel="sitemap" href="/sitemap-index.xml" />
-  <link
-    rel="alternate"
-    type="application/rss+xml"
-    title={SITE.title}
-    href={new URL(SITE.rss, Astro.site).href}
-  />
-  <meta
-    name="robots"
-    content={`${props.noIndex ? "noindex" : "index"},${props.noFollow ? "nofollow" : "follow"}`}
-  />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href={canonicalURL} />
-
-  <!-- Page Metadata -->
-  <title>{props.title}</title>
-  <meta name="title" content={props.title} />
-  <meta name="description" content={props.description} />
-  <meta
-    property="keywords"
-    content={props.tags.map((tag) => tag.path).join(", ")}
-  />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content={props.type} />
-  <meta property="og:url" content={canonicalURL} />
-  <meta property="og:title" content={SITE.title} />
-  <meta property="og:description" content={SITE.description} />
-  <meta property="og:image" content={OGImage} />
-  <meta property="og:image:alt" content={props.imageAlt} />
-
-  <!-- Twitter -->
-  <meta property="twitter:site" content={Astro.site} />
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={canonicalURL} />
-  <meta property="twitter:title" content={SITE.title} />
-  <meta property="twitter:description" content={SITE.description} />
-  <meta property="twitter:image" content={OGImage} />
-  <meta property="twitter:image:alt" content={props.imageAlt} />
-
-  {
-    isArticleMeta(props) && (
-      <>
-        <meta
-          property="article:published_time"
-          content={new Date(props.publishedAt).toISOString()}
-        />
-        <meta
-          property="article:modified_time"
-          content={new Date(props.modifiedAt).toISOString()}
-        />
-
-        {props.authors.map((author) => (
-          <>
-            <meta
-              property="article:author"
-              content={`authors/${author.path}`}
-            />
-            <meta property="author" content={author.name} />
-          </>
-        ))}
-
-        <meta property="article:section" content={props.section} />
-        <meta
-          property="article:tag"
-          content={props.tags.map((tag) => tag.path).join(", ")}
-        />
-      </>
-    )
-  }
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="title" content={Site.title} />
+  <meta name="description" content={Site.description} />
+  <title>{Site.title}</title>
 </head>

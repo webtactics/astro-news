@@ -1,22 +1,16 @@
 ---
-import Head from "@components/bases/head.astro";
-import { SITE } from "@lib/consts";
-import type { ArticleMeta, Meta } from "@lib/types";
-import Header from "@components/shared/header.astro";
-import Footer from "@components/shared/footer.astro";
-
-type Props = ArticleMeta | Meta;
-
-const props = Astro.props;
+import { Site } from "~/lib/constants/config";
+import Head from "~/components/bases/head.astro";
 ---
 
-<html lang={SITE.location} dir={SITE.dir} class="h-full">
-  <Head {...props} />
-  <body class="flex flex-col flex-1 h-full">
-    <Header />
-    <main class="flex-1 py-6">
+<!doctype html>
+<html lang={Site.locale} dir={Site.dir}>
+  <Head />
+  <body class="flex flex-col">
+    <header>header</header>
+    <main class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <footer>footer</footer>
   </body>
 </html>

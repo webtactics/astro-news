@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "Source Sans Pro";
+    --font-serif: "Source Serif 4 Variable";
+  }
+  *,
+  ::before,
+  ::after {
+    @apply cursor-default;
+
+    a,
+    a::after,
+    a::before,
+    a *,
+    button,
+    button::after,
+    button::before,
+    button * {
+      @apply cursor-pointer;
+    }
+
+    input:not([disabled]),
+    textarea:not([disabled]) {
+      @apply cursor-text;
+    }
+  }
+  html {
+    @apply h-full text-[16px];
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      @apply text-[18px];
+    }
+  }
+
+  body {
+    @apply font-sans antialiased h-full;
+  }
+
+  h1,
+  h2 {
+    @apply font-serif;
+  }
+
+  small,
+  time {
+    @apply text-sm;
+  }
+}
+
+@layer components {
+  .a-01 {
+    @apply hover:underline decoration-primary;
+  }
+}

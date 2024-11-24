@@ -1,0 +1,60 @@
+---
+import Divide from "~/components/bases/divide.astro";
+import { Image, Picture } from "astro:assets";
+import defaultImage from "~/assets/images/default-image.jpg";
+import defaultAvatar from "~/assets/images/default-avatar.jpg";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  article: CollectionEntry<"articles">;
+};
+
+const { article } = Astro.props;
+---
+
+<section class="mb-10 flex flex-col items-center justify-center">
+  <div class="container max-w-5xl">
+    <h1 class="text-4xl font-bold text-left text-pretty">
+      {article.data.title}
+    </h1>
+    <div class="flex flex-col gap-4 items-start mt-8 text-sm">
+      <div class="text-base-content/70 flex items-center gap-2">
+        <!-- TODO: fix category nmae and href -->
+        <a href="#" class="a-01">Technology</a>
+        <Divide />
+        <!-- TODO: Fix date -->
+        <span>Friday, July 10, 2023 12:00 PM</span>
+        <Divide />
+        <!-- TODO: Fix reading time -->
+        <span>8 min read</span>
+      </div>
+      <!-- TODO: fix name, href, avatar of author -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="avatar">
+          <div class="w-8 rounded-full">
+            <Image
+              src={defaultAvatar}
+              alt="author"
+              width={48}
+              height={48}
+              format="webp"
+              quality={80}
+            />
+          </div>
+        </div>
+        <span class="font-bold capitalize">Jane Doe</span>
+      </a>
+    </div>
+  </div>
+  <div class="container max-w-5xl w-full aspect-[20/9] mt-4">
+    <Picture
+      src={defaultImage}
+      alt="article"
+      layout="full-width"
+      decoding={"async"}
+      loading={"lazy"}
+      formats={["avif", "webp"]}
+      class="w-full h-full object-cover"
+    />
+  </div>
+</section>
