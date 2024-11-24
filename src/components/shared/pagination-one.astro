@@ -1,0 +1,82 @@
+---
+import ArrowLeftDouble from "~/assets/svgs/arrow-left-double.astro";
+import ArrowRightDouble from "~/assets/svgs/arrow-right-double.astro";
+import ArrowLeft01 from "~/assets/svgs/arrow-left-01.astro";
+import ArrowRight01 from "~/assets/svgs/arrow-right-01.astro";
+
+type Props = {
+  length: number;
+  currentUrl: string;
+  currentPage: number;
+  firstUrl: string;
+  prevUrl: string;
+  nextUrl: string;
+  lastUrl: string;
+};
+
+const { length, currentUrl, currentPage, firstUrl, prevUrl, nextUrl, lastUrl } =
+  Astro.props;
+
+const paginationList = Array.from({ length: `${length}` }, (_, i) => i + 1);
+---
+
+<nav class="join">
+  {
+    `${firstUrl}/1` == `${currentUrl}` ? (
+      <span class="join-item btn btn-disabled">
+        <ArrowLeftDouble />
+      </span>
+    ) : (
+      <a href={`${firstUrl}/1`} class="join-item btn">
+        <ArrowLeftDouble />
+      </a>
+    )
+  }
+
+  {
+    prevUrl ? (
+      <a href={prevUrl} class="join-item btn">
+        <ArrowLeft01 /> Previous
+      </a>
+    ) : (
+      <span class="join-item btn btn-disabled">
+        <ArrowLeft01 /> Previous
+      </span>
+    )
+  }
+
+  {
+    paginationList.map((num) => (
+      <a
+        href={`${firstUrl}${num == 1 ? "" : "/" + num}`}
+        class={`join-item btn ${currentPage == num ? "btn-active pointer-events-none" : ""}`}
+      >
+        {num}
+      </a>
+    ))
+  }
+
+  {
+    !nextUrl ? (
+      <span class="join-item btn btn-disabled">
+        next <ArrowRight01 />
+      </span>
+    ) : (
+      <a href={nextUrl} class="join-item btn">
+        next <ArrowRight01 />
+      </a>
+    )
+  }
+
+  {
+    lastUrl == currentUrl ? (
+      <span class="join-item btn btn-disabled">
+        <ArrowRightDouble />
+      </span>
+    ) : (
+      <a href={lastUrl} class="join-item btn">
+        <ArrowRightDouble />
+      </a>
+    )
+  }
+</nav>

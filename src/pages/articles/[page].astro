@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import ListLayout from "~/layouts/list.astro";
 import { Site } from "~/lib/constants/config";
 import PageListHeader from "~/components/shared/page-list-header.astro";
+import PaginationOne from "~/components/shared/pagination-one.astro";
 export const getStaticPaths = (async ({ paginate }) => {
   const articles = await getCollection("articles");
   // Generate pages from our array of astronauts, with 2 to a page
@@ -11,15 +12,16 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 // All paginated data is passed on the "page" prop
 const { page } = Astro.props;
-
 const articles = page.data;
+const pathname = new URL(Astro.request.url).pathname.split("/");
+const firstPath = pathname[1];
 ---
 
 <ListLayout>
-  <div class="container">
+  <div class="container flex flex-col h-full pb-10">
     <!--Display the current page number. Astro.params.page can also be used!-->
     <PageListHeader title="Latest Articles" />
-    <section>
+    <section class="flex-1">
       <ul>
         {
           articles.map((article) => (
@@ -29,6 +31,18 @@ const articles = page.data;
           ))
         }
       </ul>
+    </section>
+
+    <section class="flex items-center mx-auto">
+      <PaginationOne
+        length={page.lastPage}
+        currentUrl={page.url.current}
+        currentPage={page.currentPage}
+        firstUrl={`/${firstPath}`}
+        prevUrl={page.url.prev}
+        nextUrl={page.url.next}
+        lastUrl={`/${firstPath}/${page.lastPage}`}
+      />
     </section>
   </div>
 </ListLayout>

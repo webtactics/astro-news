@@ -14,11 +14,15 @@ export const getStaticPaths = async () => {
 };
 const { article } = Astro.props;
 
-const { Content } = await render(article);
+const { Content, remarkPluginFrontmatter } = await render(article);
 ---
 
 <BaseLayout>
-  <ArticleHeader article={article} />
+  <ArticleHeader
+    article={article}
+    readingTime={remarkPluginFrontmatter.minutesRead}
+    lastModified={remarkPluginFrontmatter.lastModified}
+  />
   <ContentLayout>
     <Content />
   </ContentLayout>

@@ -4,12 +4,15 @@ import { Image, Picture } from "astro:assets";
 import defaultImage from "~/assets/images/default-image.jpg";
 import defaultAvatar from "~/assets/images/default-avatar.jpg";
 import type { CollectionEntry } from "astro:content";
+import { formatDate } from "~/lib/utils/date";
 
 type Props = {
   article: CollectionEntry<"articles">;
+  readingTime: string;
+  lastModified: string;
 };
 
-const { article } = Astro.props;
+const { article, readingTime, lastModified } = Astro.props;
 ---
 
 <section class="mb-10 flex flex-col items-center justify-center">
@@ -22,11 +25,10 @@ const { article } = Astro.props;
         <!-- TODO: fix category nmae and href -->
         <a href="#" class="a-01">Technology</a>
         <Divide />
-        <!-- TODO: Fix date -->
-        <span>Friday, July 10, 2023 12:00 PM</span>
+        <!-- TODO: Fix date and replace pubDate with lastModified -->
+        <time datetime={lastModified}>{formatDate(lastModified)}</time>
         <Divide />
-        <!-- TODO: Fix reading time -->
-        <span>8 min read</span>
+        <span>{readingTime}</span>
       </div>
       <!-- TODO: fix name, href, avatar of author -->
       <a href="#" class="flex items-center gap-2">
