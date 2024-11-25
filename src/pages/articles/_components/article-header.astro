@@ -19,7 +19,7 @@ const { article, readingTime, lastModified } = Astro.props;
 ---
 
 <section
-  class="mb-8 flex flex-col lg:flex-col-reverse items-center justify-center border-b lg:border-none pb-4"
+  class="mb-8 flex flex-col lg:flex-col-reverse items-center justify-center border-b lg:border-none py-6 pt-0 lg:pt-6"
 >
   <div class="container px-0 lg:px-4 max-w-5xl w-full aspect-[20/9] lg:mt-4">
     <Picture
@@ -32,7 +32,7 @@ const { article, readingTime, lastModified } = Astro.props;
       class="w-full h-full object-cover"
     />
   </div>
-  <div class="container my-2 lg:hidden flex items-center gap-2">
+  <div class="container my-4 lg:hidden flex items-center gap-2">
     <ResourcesAdd size="16" />
     <a href="#" class="a-01 font-semibold">Technology</a>
   </div>

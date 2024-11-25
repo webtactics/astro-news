@@ -1,12 +1,18 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
-import { articleSchema } from "~/content/schema";
+import { articleSchema, viewSchema } from "~/lib/schema";
 
 const articleCollection = defineCollection({
   loader: glob({ pattern: "**\/*.mdx", base: "./src/content/articles" }),
   schema: articleSchema
 })
 
+const viewCollection = defineCollection({
+  loader: glob({ pattern: "**\/*.mdx", base: "./src/content/views" }),
+  schema: viewSchema
+})
+
 export const collections = {
-  articles: articleCollection
+  articles: articleCollection,
+  views: viewCollection
 }

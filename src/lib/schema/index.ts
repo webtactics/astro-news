@@ -5,3 +5,9 @@ export const articleSchema = z.object({
   description: z.string().max(160, "Too long, max 160 characters"),
   category: z.string(),
 })
+
+export const viewSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  blocks: z.array(z.any()),
+})

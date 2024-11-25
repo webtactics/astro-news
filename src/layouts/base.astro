@@ -1,13 +1,14 @@
 ---
 import { Site } from "~/lib/constants/config";
 import Head from "~/components/bases/head.astro";
+import Header from "~/components/shared/header.astro";
 ---
 
 <!doctype html>
 <html lang={Site.locale} dir={Site.dir}>
   <Head />
   <body class="flex flex-col">
-    <header>header</header>
+    <Header />
     <main class="flex-1">
       <slot />
     </main>
