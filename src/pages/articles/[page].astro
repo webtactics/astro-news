@@ -3,7 +3,6 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import ListLayout from "~/layouts/list.astro";
 import { Site } from "~/lib/constants/config";
-import PageListHeader from "~/components/shared/page-list-header.astro";
 import PaginationOne from "~/components/shared/pagination-one.astro";
 import { getEntry } from "astro:content";
 export const getStaticPaths = (async ({ paginate }) => {
@@ -20,32 +19,26 @@ const view = await getEntry("views", "articles");
 const [HEADER] = view.data.blocks;
 ---
 
-<ListLayout>
-  <div class="container flex flex-col h-full pb-10">
-    <!--Display the current page number. Astro.params.page can also be used!-->
-    <PageListHeader title={HEADER.title} />
-    <section class="flex-1">
-      <ul>
-        {
-          articles.map((article) => (
-            <li>
-              <a href={`/articles/${article.id}`}>{article.data.title}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+<ListLayout title={HEADER.title}>
+  <section class="flex-1">
+    <ul>
+      {
+        articles.map((article) => (
+          <li>
+            <a href={`/articles/${article.id}`}>{article.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
-    <section class="flex items-center mx-auto">
-      <PaginationOne
-        length={page.lastPage}
-        currentUrl={page.url.current}
-        currentPage={page.currentPage}
-        firstUrl={`/${firstPath}`}
-        prevUrl={page.url.prev}
-        nextUrl={page.url.next}
-        lastUrl={`/${firstPath}/${page.lastPage}`}
-      />
-    </section>
-  </div>
+  <PaginationOne
+    length={page.lastPage}
+    currentUrl={page.url.current}
+    currentPage={page.currentPage}
+    firstUrl={`/${firstPath}`}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    lastUrl={`/${firstPath}/${page.lastPage}`}
+  />
 </ListLayout>

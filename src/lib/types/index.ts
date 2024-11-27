@@ -5,3 +5,9 @@ export type Icon = {
   color?: string;
   strokeWidth?: string;
 }
+
+export type Link = {
+  href: string;
+  text: string;
+  icon?: string;
+}

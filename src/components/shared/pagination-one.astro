@@ -34,63 +34,65 @@ const paginationList = Array.from(
 );
 ---
 
-<nav class="join">
-  {
-    `${firstUrl}/1` == `${currentUrl}` ? (
-      <span class="join-item btn btn-sm btn-disabled">
-        <ArrowLeftDouble />
-      </span>
-    ) : (
-      <a href={`${firstUrl}/1`} class="join-item btn btn-sm">
-        <ArrowLeftDouble />
-      </a>
-    )
-  }
+<section class="flex items-center mx-auto mt-8">
+  <nav class="join">
+    {
+      `${firstUrl}/1` == `${currentUrl}` ? (
+        <span class="join-item btn btn-sm btn-disabled">
+          <ArrowLeftDouble />
+        </span>
+      ) : (
+        <a href={`${firstUrl}/1`} class="join-item btn btn-sm">
+          <ArrowLeftDouble />
+        </a>
+      )
+    }
 
-  {
-    prevUrl ? (
-      <a href={prevUrl} class="join-item btn btn-sm">
-        <ArrowLeft01 /> <span class="hidden lg:block">Previous</span>
-      </a>
-    ) : (
-      <span class="join-item btn btn-sm btn-disabled">
-        <ArrowLeft01 /> <span class="hidden lg:block">Previous</span>
-      </span>
-    )
-  }
+    {
+      prevUrl ? (
+        <a href={prevUrl} class="join-item btn btn-sm">
+          <ArrowLeft01 /> <span class="hidden lg:block">Previous</span>
+        </a>
+      ) : (
+        <span class="join-item btn btn-sm btn-disabled">
+          <ArrowLeft01 /> <span class="hidden lg:block">Previous</span>
+        </span>
+      )
+    }
 
-  {
-    paginationList.map((num) => (
-      <a
-        href={`${firstUrl}${num == 1 ? "" : "/" + num}`}
-        class={`join-item btn btn-sm ${currentPage == num ? "btn-active pointer-events-none" : ""}`}
-      >
-        {num}
-      </a>
-    ))
-  }
+    {
+      paginationList.map((num) => (
+        <a
+          href={`${firstUrl}${num == 1 ? "" : "/" + num}`}
+          class={`join-item btn btn-sm ${currentPage == num ? "btn-active pointer-events-none" : ""}`}
+        >
+          {num}
+        </a>
+      ))
+    }
 
-  {
-    !nextUrl ? (
-      <span class="join-item btn btn-sm btn-disabled">
-        <span class="hidden lg:block">Next</span> <ArrowRight01 />
-      </span>
-    ) : (
-      <a href={nextUrl} class="join-item btn btn-sm">
-        <span class="hidden lg:block">Next</span> <ArrowRight01 />
-      </a>
-    )
-  }
+    {
+      !nextUrl ? (
+        <span class="join-item btn btn-sm btn-disabled">
+          <span class="hidden lg:block">Next</span> <ArrowRight01 />
+        </span>
+      ) : (
+        <a href={nextUrl} class="join-item btn btn-sm">
+          <span class="hidden lg:block">Next</span> <ArrowRight01 />
+        </a>
+      )
+    }
 
-  {
-    lastUrl == currentUrl ? (
-      <span class="join-item btn btn-sm btn-disabled">
-        <ArrowRightDouble />
-      </span>
-    ) : (
-      <a href={lastUrl} class="join-item btn btn-sm">
-        <ArrowRightDouble />
-      </a>
-    )
-  }
-</nav>
+    {
+      lastUrl == currentUrl ? (
+        <span class="join-item btn btn-sm btn-disabled">
+          <ArrowRightDouble />
+        </span>
+      ) : (
+        <a href={lastUrl} class="join-item btn btn-sm">
+          <ArrowRightDouble />
+        </a>
+      )
+    }
+  </nav>
+</section>

@@ -1,7 +1,7 @@
 ---
 import Github from "~/assets/svgs/github.astro";
 import Search01 from "~/assets/svgs/search-01.astro";
-import { Site } from "~/lib/constants/config";
+import { Navigation, otherLinks, Site } from "~/lib/constants/config";
 ---
 
 <div class="navbar bg-base-100 border-b">
@@ -22,13 +22,47 @@ import { Site } from "~/lib/constants/config";
             d="M4 6h16M4 12h16M4 18h7"></path>
         </svg>
       </div>
+      <!-- <ul
+        
+        class="menu rounded-box  mt-1 w-52 p-2 "
+      >
+
+      </ul> -->
       <ul
         tabindex="0"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+        class="menu dropdown-content z-[1] bg-base-100 rounded-box w-56 shadow"
       >
-        <li><a>Homepage</a></li>
-        <li><a>Portfolio</a></li>
-        <li><a>About</a></li>
+        <li><a>Home</a></li>
+
+        <li>
+          <details>
+            <summary>Categories</summary>
+            <ul>
+              {
+                Navigation.map(({ href, text }) => (
+                  <li>
+                    <a href={href}>{text}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>Other Pages</summary>
+            <ul>
+              {
+                otherLinks.map(({ href, text }) => (
+                  <li>
+                    <a href={href}>{text}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </details>
+        </li>
       </ul>
     </div>
   </div>
@@ -36,10 +70,10 @@ import { Site } from "~/lib/constants/config";
     <a class="btn btn-ghost text-xl" href="/">{Site.title}</a>
   </div>
   <div class="navbar-end">
-    <button class="btn btn-ghost btn-circle">
+    <a class="btn btn-ghost btn-circle" href="/search">
       <Search01 />
-    </button>
-    <a class="btn btn-ghost btn-circle">
+    </a>
+    <a class="btn btn-ghost btn-circle" href={Site.github} target="_blank">
       <Github />
     </a>
   </div>

@@ -2,6 +2,7 @@
 import { Site } from "~/lib/constants/config";
 import Head from "~/components/bases/head.astro";
 import Header from "~/components/shared/header.astro";
+import Footer from "~/components/shared/footer.astro";
 ---
 
 <!doctype html>
@@ -12,6 +13,6 @@ import Header from "~/components/shared/header.astro";
     <main class="flex-1">
       <slot />
     </main>
-    <footer>footer</footer>
+    <Footer />
   </body>
 </html>
