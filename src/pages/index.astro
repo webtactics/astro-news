@@ -1,9 +1,14 @@
 ---
 import BaseLayout from "../layouts/base.astro";
+import NewsTicker from "./_home/components/news-ticker.astro";
+import Headlines from "./_home/components/headlines.astro";
+import LeatestNews from "./_home/components/leatestNews.astro";
+import Authors from "./_home/components/authors.astro";
 ---
 
 <BaseLayout>
-  <h1 class="lg:text-wrap">Welcome to Astro News!</h1>
-  <small>A news website built with Astro</small>
-  <time datetime="2023-01-01">January 1, 2023</time>
+  <NewsTicker />
+  <Headlines />
+  <LeatestNews />
+  <Authors />
 </BaseLayout>
