@@ -7,27 +7,6 @@
     --font-sans: "Source Sans Pro";
     --font-serif: "Source Serif 4 Variable";
   }
-  *,
-  ::before,
-  ::after {
-    @apply cursor-default;
-
-    a,
-    a::after,
-    a::before,
-    a *,
-    button,
-    button::after,
-    button::before,
-    button * {
-      @apply cursor-pointer;
-    }
-
-    input:not([disabled]),
-    textarea:not([disabled]) {
-      @apply cursor-text;
-    }
-  }
   html {
     @apply h-full text-[16px];
   }
@@ -57,4 +36,16 @@
   .a-01 {
     @apply hover:underline decoration-primary;
   }
+}
+
+:where(*) :where(*, ::before, ::after) {
+  cursor: default;
+}
+
+:where(a, button) :where(*, ::before, ::after) {
+  cursor: pointer;
+}
+
+:where(input, textarea):not([disabled]) {
+  cursor: text;
 }
