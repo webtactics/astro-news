@@ -4,13 +4,14 @@ import HeadlineSmall from "./elements/headline-small.astro";
 ---
 
 <section
-  class="mt-2 lg:mt-8 grid grid-cols-1 gap-6 md:grid-cols-10 lg:container"
+  class="grid grid-cols-1 gap-6 md:grid-cols-10 container pt-4 md:pt-8"
 >
   <div class="col-span-1 md:col-span-6">
     <HeadlineBig />
   </div>
-  <div class="col-span-1 md:col-span-4 container lg:px-0">
+  <div class="col-span-1 md:col-span-4">
     <HeadlineSmall isFirst />
+    <HeadlineSmall />
     <HeadlineSmall />
     <HeadlineSmall isLast />
   </div>

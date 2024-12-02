@@ -13,7 +13,7 @@
 
   @media (min-width: 1024px) {
     html {
-      @apply text-[18px];
+      @apply text-[17px];
     }
   }
 
@@ -42,7 +42,7 @@
   cursor: default;
 }
 
-:where(a, button) :where(*, ::before, ::after) {
+a, button, :where(a, button) :where(*, ::before, ::after) {
   cursor: pointer;
 }
 
