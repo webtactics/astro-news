@@ -1,5 +1,4 @@
 ---
-import Divide from "~/components/bases/divide.astro";
 import { Image, Picture } from "astro:assets";
 import defaultImage from "~/assets/images/default-image.jpg";
 import defaultAvatar from "~/assets/images/default-avatar.jpg";
@@ -8,6 +7,7 @@ import { formatDate } from "~/lib/utils/date";
 import ResourcesAdd from "~/assets/svgs/resources-add.astro";
 import Time04 from "~/assets/svgs/time-04.astro";
 import Calendar04 from "~/assets/svgs/calendar-04.astro";
+import Divider from "~/components/bases/divider.astro";
 
 type Props = {
   article: CollectionEntry<"articles">;
@@ -48,14 +48,14 @@ const { article, readingTime, lastModified } = Astro.props;
           <a href="#" class="a-01">Technology</a>
         </span>
         <div class="hidden lg:block">
-          <Divide />
+          <Divider />
         </div>
         <!-- TODO: Fix date and replace pubDate with lastModified -->
         <span class="flex items-center gap-1">
           <Calendar04 size="15" />
           <time datetime={lastModified}>{formatDate(lastModified)}</time>
         </span>
-        <Divide />
+        <Divider />
         <span class="flex items-center gap-1">
           <Time04 size="15" />
           <span>{readingTime}</span>
