@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Time04 from "~/assets/svgs/time-04.astro";
 import defaultImage from "~/assets/images/default-image.jpg";
+import Divider from "~/components/bases/divider.astro";
 
 type Props = {
   article?: CollectionEntry<"articles">;
@@ -37,9 +38,9 @@ const { article, isLast, isFirst } = Astro.props;
         </div>
       </div>
       <div class="flex items-center text-xs text-base-content/80 mt-auto">
+        <span class="text-primary">Business</span>
+        <Divider/>
         <span>3 hrs ago</span>
-        <div class="divider divider-horizontal mx-[4px] h-4 w-1"></div>
-        <span>Business</span>
       </div>
     </div>
   </a>

@@ -1,6 +1,20 @@
+---
+import Card from "~/components/shared/card.astro";
+import ArrowRight02 from "~/assets/svgs/arrow-right-02.astro"
+---
+
 <section class="container pt-12 pb-0">
     <div class="flex items-center justify-between">
         <h2 class="text-xl font-bold">Latest News</h2>
-        <a href="#" class="a-01">See all</a>
+        <a href="#" class="flex items-center gap-1 text-sm text-base-content/80 group">
+            <span class="group-hover:text-primary transition-all" >View all</span>
+            <span class="group-hover:translate-x-0.5 transition-all group-hover:text-primary" ><ArrowRight02/></span>
+        </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-4 mt-4">
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
     </div>
 </section>

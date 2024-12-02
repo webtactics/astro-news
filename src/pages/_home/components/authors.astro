@@ -1,6 +1,13 @@
+---
+import ArrowRight02 from "~/assets/svgs/arrow-right-02.astro";
+---
+
 <section class="container py-12">
     <div class="flex items-center justify-between">
         <h2 class="text-xl font-bold">Authors</h2>
-        <a href="#" class="a-01">See all</a>
+        <a href="#" class="flex items-center gap-1 text-sm text-base-content/80 group">
+            <span class="group-hover:text-primary transition-all" >View all</span>
+            <span class="group-hover:translate-x-0.5 transition-all group-hover:text-primary" ><ArrowRight02/></span>
+        </a>
     </div>
 </section>

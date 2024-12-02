@@ -1,6 +1,7 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Picture } from "astro:assets";
 import defaultImage from "~/assets/images/default-image.jpg";
+import Divider from "~/components/bases/divider.astro";
 ---
 
 <article class="group">
@@ -25,9 +26,9 @@ import defaultImage from "~/assets/images/default-image.jpg";
         </p>
       </div>
       <div class="flex items-center text-xs text-base-content/80 mt-2 md:mt-4">
+        <span class="text-primary">Business</span>
+        <Divider/>
         <span>3 hrs ago</span>
-        <div class="divider divider-horizontal mx-[4px] h-4 w-1"></div>
-        <span>Business</span>
       </div>
     </div>
   </a>
