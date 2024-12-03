@@ -3,15 +3,14 @@ import {Image} from 'astro:assets';
 import image from "~/assets/images/default-avatar.jpg"
 ---
 
-<article class="col-span-1 group max-w-xs mx-auto">
+<article class="col-span-1 group mx-auto">
     <a href="#" class="flex flex-col gap-2">
         <div class="aspect-square w-full rounded-md overflow-hidden">
             <Image class="w-full h-full object-cover filter grayscale group-hover:grayscale-0" src={image} alt={"xxx"} />
         </div>
         <div class="flex flex-col gap-1">
             <h3 class="text-lg font-semibold group-hover:underline">Name Surname</h3>
-            <p class="text-base text-base-content/90">Author</p>
-            <span class="text-balance line-clamp-2 text-sm text-base-content/80">sunt vero pariatur nemo tempore enim asperiores quibusdam soluta laudantium, hic deleniti! Omnis impedit quisquam veniam incidunt.</span>
+            <p class="text-sm text-primary/60">Author</p>
         </div>
     </a>
 </article>
