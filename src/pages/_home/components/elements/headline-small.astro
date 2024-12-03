@@ -4,13 +4,17 @@ import type { CollectionEntry } from "astro:content";
 import Time04 from "~/assets/svgs/time-04.astro";
 import defaultImage from "~/assets/images/default-image.jpg";
 import Divider from "~/components/bases/divider.astro";
+import { render } from "astro:content";
+import { getDateDistance } from "~/lib/utils/date";
 
 type Props = {
-  article?: CollectionEntry<"articles">;
+  article: CollectionEntry<"articles">;
   isFirst?: boolean;
   isLast?: boolean;
 };
 const { article, isLast, isFirst } = Astro.props;
+
+const { remarkPluginFrontmatter } = await render(article);
 ---
 
 <article
@@ -29,18 +33,17 @@ const { article, isLast, isFirst } = Astro.props;
       <div class="flex items-center gap-2">
         <div class="flex-1">
           <h2 class="text-base group-hover:underline">
-            This is a headline small
+            {article.data.title}
           </h2>
           <p class="text-sm text-base-content/80 text-balance md:line-clamp-2 lg:line-clamp-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
-            quia.
+            {article.data.description}
           </p>
         </div>
       </div>
       <div class="flex items-center text-xs text-base-content/80 mt-auto">
-        <span class="text-primary">Business</span>
+        <span class="text-primary">{article.data.category}</span>
         <Divider/>
-        <span>3 hrs ago</span>
+        <span>{getDateDistance(remarkPluginFrontmatter.lastModified)}</span>
       </div>
     </div>
   </a>

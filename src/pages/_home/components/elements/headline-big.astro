@@ -1,7 +1,18 @@
 ---
 import { Picture } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 import defaultImage from "~/assets/images/default-image.jpg";
 import Divider from "~/components/bases/divider.astro";
+import { getDateDistance } from "~/lib/utils/date";
+
+type Props = {
+  article: CollectionEntry<"articles">;
+}
+
+const { article } = Astro.props;
+
+const { remarkPluginFrontmatter } = await render(article);
 ---
 
 <article class="group">
@@ -19,16 +30,16 @@ import Divider from "~/components/bases/divider.astro";
         <h2
           class="text-xl font-semibold group-hover:underline underline-offset-2"
         >
-          This is a headline big
+          {article.data.title}
         </h2>
         <p class="text-base-content/90 text-base max-w-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          {article.data.description}
         </p>
       </div>
       <div class="flex items-center text-xs text-base-content/80 mt-2 md:mt-4">
-        <span class="text-primary">Business</span>
+        <span class="text-primary">{article.data.category}</span>
         <Divider/>
-        <span>3 hrs ago</span>
+        <span>{getDateDistance(remarkPluginFrontmatter.lastModified)}</span>
       </div>
     </div>
   </a>
