@@ -3,7 +3,7 @@ import {Image} from 'astro:assets';
 import image from "~/assets/images/default-avatar.jpg"
 ---
 
-<article class="col-span-1 group mx-auto">
+<article class="col-span-1 group mx-auto max-w-xs">
     <a href="#" class="flex flex-col gap-2">
         <div class="aspect-square w-full rounded-md overflow-hidden">
             <Image class="w-full h-full object-cover filter grayscale group-hover:grayscale-0" src={image} alt={"xxx"} />

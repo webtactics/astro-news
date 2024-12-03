@@ -1,16 +1,11 @@
 ---
 import ArrowRight02 from "~/assets/svgs/arrow-right-02.astro";
 import Author from "~/components/shared/author.astro";
+import HeaderSection from "./header-section.astro";
 ---
 
 <section class="container py-12">
-    <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold">Authors</h2>
-        <a href="#" class="flex items-center gap-1 text-sm text-base-content/80 group">
-            <span class="group-hover:text-primary transition-all" >View all</span>
-            <span class="group-hover:translate-x-0.5 transition-all group-hover:text-primary" ><ArrowRight02/></span>
-        </a>
-    </div>
+    <HeaderSection title="Authors" link_title="View all" link_url="/authors"/>
     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-4 mt-4">
         <Author/>
         <Author/>
