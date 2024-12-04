@@ -3,7 +3,7 @@ import Card from "~/components/shared/card.astro";
 import HeaderSection from "./header-section.astro";
 import { articlesHandler } from "~/lib/handlers/articles";
 
-const articles = await articlesHandler.allArticles();
+const articles = articlesHandler.allArticles();
 ---
 
 <section class="container pt-12 pb-0">

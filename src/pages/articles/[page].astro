@@ -5,7 +5,6 @@ import ListLayout from "~/layouts/list.astro";
 import { Site } from "~/lib/constants/config";
 import PaginationOne from "~/components/shared/pagination-one.astro";
 import { getEntry } from "astro:content";
-import { undefined } from "astro:schema";
 export const getStaticPaths = (async ({ paginate }) => {
   const articles = await getCollection("articles");
   return paginate(articles, { pageSize: Site.postsPerPage });
@@ -18,7 +17,7 @@ const firstPath = pathname[1];
 
 const view = await getEntry("views", "articles");
 
-if (!view) {
+if (!view || view === undefined) {
   return Astro.redirect("/404");
 }
 
