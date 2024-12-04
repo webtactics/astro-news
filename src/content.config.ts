@@ -4,7 +4,7 @@ import { articleSchema, viewSchema } from "~/lib/schema";
 
 const articleCollection = defineCollection({
   loader: glob({ pattern: "**\/*.mdx", base: "./src/content/articles" }),
-  schema: articleSchema
+  schema: ({image}) => articleSchema(image)
 })
 
 const viewCollection = defineCollection({

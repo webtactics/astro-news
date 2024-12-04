@@ -3,10 +3,8 @@ import { articlesHandler } from "~/lib/handlers/articles";
 import HeadlineBig from "./elements/headline-big.astro";
 import HeadlineSmall from "./elements/headline-small.astro";
 
-const bigHeadline = await articlesHandler.headlineBig();
-const smallHeadlines = await articlesHandler.headlineSmall();
-
-console.log("BIG",bigHeadline);
+const bigHeadline = articlesHandler.headlineBig();
+const smallHeadlines = articlesHandler.headlineSmall();
 
 ---
 
