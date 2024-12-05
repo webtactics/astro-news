@@ -7,7 +7,7 @@ import { Navigation, otherLinks, Site } from "~/lib/constants/config";
 <div class="navbar bg-base-100 border-b">
   <div class="navbar-start">
     <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle" aria-label="Menu">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
@@ -27,7 +27,7 @@ import { Navigation, otherLinks, Site } from "~/lib/constants/config";
         tabindex="0"
         class="menu dropdown-content z-50 bg-base-100 rounded-box w-56 shadow"
       >
-        <li><a>Home</a></li>
+        <li><a href="/">Home</a></li>
 
         <li>
           <details>
@@ -65,10 +65,10 @@ import { Navigation, otherLinks, Site } from "~/lib/constants/config";
     <a class="btn btn-ghost text-xl" href="/">{Site.title}</a>
   </div>
   <div class="navbar-end">
-    <a class="btn btn-ghost btn-circle" href="/search">
+    <a class="btn btn-ghost btn-circle" href="/search" aria-label="Search">
       <Search01 />
     </a>
-    <a class="btn btn-ghost btn-circle" href={Site.github} target="_blank">
+    <a class="btn btn-ghost btn-circle" href={Site.github} target="_blank" aria-label="GitHub">
       <Github />
     </a>
   </div>
