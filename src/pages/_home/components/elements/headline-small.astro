@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import Divider from "~/components/bases/divider.astro";
 import { render } from "astro:content";
 import { getDateDistance } from "~/lib/utils/date";
+import { categoriesHandler } from "~/lib/handlers/categories";
 
 type Props = {
   article: CollectionEntry<"articles">;
@@ -13,7 +14,7 @@ type Props = {
 const { article, isLast, isFirst } = Astro.props;
 
 const { remarkPluginFrontmatter } = await render(article);
-
+const category = categoriesHandler.oneCategory(article.data.category.id);
 ---
 
 <article
@@ -25,7 +26,7 @@ const { remarkPluginFrontmatter } = await render(article);
 >
   <a href={`/articles/${article.id}`} class="flex items-stretch gap-2 group">
     <div class="flex flex-col flex-1">
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 mb-1">
         <div class="flex-1">
           <h2 class="text-base group-hover:underline">
             {article.data.title}
@@ -36,7 +37,7 @@ const { remarkPluginFrontmatter } = await render(article);
         </div>
       </div>
       <div class="flex items-center text-xs text-base-content/80 mt-auto">
-        <span class="text-primary">{article.data.category}</span>
+        <span class="text-primary">{category.data.title}</span>
         <Divider/>
         <span>{getDateDistance(remarkPluginFrontmatter.lastModified)}</span>
       </div>

@@ -49,9 +49,9 @@ import Icon from "../bases/icon.astro";
           <p class="font-bold">Social Media:</p>
           <ul class="flex flex-wrap gap-4">
             {
-              Social.map(({ href, text, icon }) => (
+              Social.map(({ href, icon, text }) => (
                 <li>
-                  <a href={href} class="link link-hover" target="_blank">
+                  <a href={href} class="link link-hover" target="_blank" title={text} aria-label={text}>
                     <Icon icon={icon} />
                   </a>
                 </li>

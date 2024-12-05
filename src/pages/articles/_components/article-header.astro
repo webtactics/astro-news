@@ -8,6 +8,7 @@ import ResourcesAdd from "~/assets/svgs/resources-add.astro";
 import Time04 from "~/assets/svgs/time-04.astro";
 import Calendar04 from "~/assets/svgs/calendar-04.astro";
 import Divider from "~/components/bases/divider.astro";
+import { categoriesHandler } from "~/lib/handlers/categories";
 
 type Props = {
   article: CollectionEntry<"articles">;
@@ -16,6 +17,8 @@ type Props = {
 };
 
 const { article, readingTime, lastModified } = Astro.props;
+
+const category = categoriesHandler.oneCategory(article.data.category.id);
 ---
 
 <section
@@ -34,7 +37,7 @@ const { article, readingTime, lastModified } = Astro.props;
   </div>
   <div class="container my-4 lg:hidden flex items-center gap-2">
     <ResourcesAdd size="16" />
-    <a href="#" class="a-01 font-semibold">Technology</a>
+    <a href={`/categories/${category.data.path}`} class="a-01 font-semibold">{category.data.title}</a>
   </div>
   <div class="container max-w-5xl">
     <h1 class="text-2xl lg:text-4xl font-bold text-left text-pretty">
@@ -45,7 +48,7 @@ const { article, readingTime, lastModified } = Astro.props;
         <!-- TODO: fix category nmae and href -->
         <span class="lg:flex items-center gap-1 hidden">
           <ResourcesAdd size="15" />
-          <a href="#" class="a-01">Technology</a>
+          <a href={`/categories/${category.data.path}`} class="a-01 font-semibold">{category.data.title}</a>
         </span>
         <div class="hidden lg:block">
           <Divider />

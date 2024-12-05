@@ -6,9 +6,9 @@ import { articlesHandler } from "~/lib/handlers/articles";
 const articles = articlesHandler.allArticles();
 ---
 
-<section class="container pt-12 pb-0">
+<section class="container pt-12 pb-0 space-y-4">
     <HeaderSection title="Latest News" link_title="View all" link_url="/articles"/>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 grid-rows-6 md:grid-rows-2">
         {
             articles.slice(0,6).map((article) => <Card article={article}/>)
         }
