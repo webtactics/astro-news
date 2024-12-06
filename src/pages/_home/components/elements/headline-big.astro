@@ -39,7 +39,7 @@ const category = categoriesHandler.oneCategory(article.data.category.id);
           {article.data.description}
         </p>
       </div>
-      <div class="flex items-center text-xs text-base-content/80 mt-2 md:mt-4">
+      <div class="flex items-center text-xs text-base-content/80 mt-2">
         <span class="text-primary">{category.data.title}</span>
         <Divider/>
         <span>{getDateDistance(remarkPluginFrontmatter.lastModified)}</span>

@@ -10,6 +10,7 @@ export const articleSchema = (image: ImageFunction) => z.object({
   title: z.string().max(60, "Too long, max 60 characters"),
   description: z.string().max(160, "Too long, max 160 characters"),
   category: reference("categories"),
+  publishedTime: z.string().transform((val) => new Date(val)),
 })
 
 export const viewSchema = z.object({

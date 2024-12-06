@@ -5,7 +5,7 @@ import { Navigation, otherLinks, Site } from "~/lib/constants/config";
 ---
 
 <div class="navbar bg-base-100 border-b">
-  <div class="navbar-start">
+  <div class="navbar-start lg:w-1/2">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle" aria-label="Menu">
         <svg
@@ -60,9 +60,10 @@ import { Navigation, otherLinks, Site } from "~/lib/constants/config";
         </li>
       </ul>
     </div>
+    <a class="text-xl px-2 text-nowrap lg:hidden" href="/">{Site.title}</a>
   </div>
-  <div class="navbar-center">
-    <a class="btn btn-ghost text-xl" href="/">{Site.title}</a>
+  <div class="navbar-center hidden lg:flex">
+    <a class="text-xl px-2" href="/">{Site.title}</a>
   </div>
   <div class="navbar-end">
     <a class="btn btn-ghost btn-circle" href="/search" aria-label="Search">

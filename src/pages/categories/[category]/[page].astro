@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from "astro";
+import { Site } from "~/lib/constants/config";
+import { articlesHandler } from "~/lib/handlers/articles";
+import { categoriesHandler } from "~/lib/handlers/categories";
+import ListLayout from "~/layouts/list.astro";
+import WideCard from "~/components/shared/wide-card.astro";
+export const getStaticPaths = (async ({paginate}) => {
+
+  const allCategories = categoriesHandler.allCategories();
+  const allArticles = articlesHandler.allArticles();
+    
+  return allCategories.flatMap((category) => {
+    const filteredArticles = allArticles.filter((article) => article.data.category.id === category.id);
+    return paginate(filteredArticles, {
+      params: { category: category.id },
+      pageSize: Site.postsPerPage
+    });
+  })
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const params = Astro.params;
+const articles = page.data;
+---
+<ListLayout title={params.category}>
+  <ul class="flex flex-col gap-2">
+
+    {
+      articles.map((article) => (
+        <li>
+       <WideCard article={article} isLast={articles.lastIndexOf(article) === articles.length - 1} />
+     </li>
+   ))
+  }
+  </ul>
+</ListLayout>

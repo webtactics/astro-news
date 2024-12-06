@@ -15,28 +15,28 @@ export const Site = {
 
 export const Navigation: Link[] = [
   {
-    href: "/categories/business",
-    text: "Business",
-  },
-  {
-    href: "/categories/technology",
+    href: "technology",
     text: "Technology",
   },
   {
-    href: "/categories/health",
+    href: "programming",
+    text: "Programming",
+  },
+  {
+    href: "lifestyle",
+    text: "Lifestyle",
+  },
+  {
+    href: "productivity",
+    text: "Productivity",
+  },
+  {
+    href: "health",
     text: "Health",
   },
   {
-    href: "/categories/science",
-    text: "Science",
-  },
-  {
-    href: "/categories/sports",
-    text: "Sports",
-  },
-  {
-    href: "/categories/entertainment",
-    text: "Entertainment",
+    href: "finance",
+    text: "Finance",
   }
 ]
 
