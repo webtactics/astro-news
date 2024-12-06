@@ -17,7 +17,7 @@ const { article, isLast } = Astro.props;
       <div
         class="flex-shrink-0 aspect-square w-32 text-sm text-base-content/60 text-pretty capitalize hidden lg:flex pt-1"
       >
-        {getDateDistance(article.data.publishedTime.toISOString())}
+        {getDateDistance(article.data.publishedTime)}
       </div>
       <div
         class:list={[
@@ -50,7 +50,7 @@ const { article, isLast } = Astro.props;
           >
             <span>
               {
-                getDateDistance(article.data.publishedTime.toISOString())
+                getDateDistance(article.data.publishedTime)
               }
             </span>
           </time>
