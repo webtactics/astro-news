@@ -5,6 +5,7 @@ import ListLayout from "~/layouts/list.astro";
 import { Site } from "~/lib/constants/config";
 import PaginationOne from "~/components/shared/pagination-one.astro";
 import { getEntry } from "astro:content";
+import WideCard from "~/components/shared/wide-card.astro";
 export const getStaticPaths = (async ({ paginate }) => {
   const articles = await getCollection("articles");
   return paginate(articles, { pageSize: Site.postsPerPage });
@@ -29,9 +30,7 @@ const [HEADER] = view.data.blocks;
     <ul>
       {
         articles.map((article) => (
-          <li>
-            <a href={`/articles/${article.id}`}>{article.data.title}</a>
-          </li>
+          <WideCard article={article} isLast={articles.lastIndexOf(article) === articles.length - 1} />
         ))
       }
     </ul>

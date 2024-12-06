@@ -5,6 +5,7 @@ import { articlesHandler } from "~/lib/handlers/articles";
 import { categoriesHandler } from "~/lib/handlers/categories";
 import ListLayout from "~/layouts/list.astro";
 import WideCard from "~/components/shared/wide-card.astro";
+import PaginationOne from "~/components/shared/pagination-one.astro";
 export const getStaticPaths = (async ({paginate}) => {
 
   const allCategories = categoriesHandler.allCategories();
@@ -22,9 +23,11 @@ export const getStaticPaths = (async ({paginate}) => {
 const { page } = Astro.props;
 const params = Astro.params;
 const articles = page.data;
+const pathname = new URL(Astro.request.url).pathname.split("/");
+const firstPath = pathname[1];
 ---
 <ListLayout title={params.category}>
-  <ul class="flex flex-col gap-2">
+  <ul class="flex flex-col gap-2 flex-1">
 
     {
       articles.map((article) => (
@@ -34,4 +37,17 @@ const articles = page.data;
    ))
   }
   </ul>
+  {
+    articles.length > Site.postsPerPage ? (
+    <PaginationOne
+    length={page.lastPage}
+    currentUrl={page.url.current}
+    currentPage={page.currentPage}
+    firstUrl={`/${firstPath}`}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    lastUrl={`/${firstPath}/${page.lastPage}`}
+  />
+    ): null
+  }
 </ListLayout>
