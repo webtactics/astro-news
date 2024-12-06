@@ -8,8 +8,9 @@ export function getStaticPaths() {
 }
 
 const { category } = Astro.params;
-return Astro.redirect(`/categories/${category}/1`);
-
 ---
-
+<meta 
+http-equiv="refresh" 
+content={ `0; url=${ `/categories/${category}/1` }` } 
+/>
 <h1>{category}</h1>
