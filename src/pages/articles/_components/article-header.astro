@@ -9,6 +9,7 @@ import Time04 from "~/assets/svgs/time-04.astro";
 import Calendar04 from "~/assets/svgs/calendar-04.astro";
 import Divider from "~/components/bases/divider.astro";
 import { categoriesHandler } from "~/lib/handlers/categories";
+import { authorsHandler } from "~/lib/handlers/authors";
 
 type Props = {
   article: CollectionEntry<"articles">;
@@ -19,6 +20,7 @@ type Props = {
 const { article, readingTime, lastModified } = Astro.props;
 
 const category = categoriesHandler.oneCategory(article.data.category.id);
+const authors = authorsHandler.getAuthors(article.data.author);
 ---
 
 <section
@@ -65,21 +67,27 @@ const category = categoriesHandler.oneCategory(article.data.category.id);
         </span>
       </div>
       <!-- TODO: fix name, href, avatar of author -->
-      <a href="#" class="flex items-center gap-2">
-        <div class="avatar">
-          <div class="w-8 rounded-full">
-            <Image
-              src={defaultAvatar}
-              alt="author"
-              width={48}
-              height={48}
-              format="webp"
-              quality={80}
-            />
+       {
+        authors.map((author) => (
+          <div class="flex items-center gap-2">
+            <a href={`/authors/${author.id}`} class="flex items-center gap-2">
+              <div class="avatar">
+                <div class="w-8 rounded-full">
+                  <Image
+                    src={author.data.avatar}
+                    alt="author"
+                    width={48}
+                    height={48}
+                    format="webp"
+                    quality={80}
+                  />
+                </div>
+              </div>
+              <span class="font-bold capitalize">{author.data.name}</span>
+              </a>
           </div>
-        </div>
-        <span class="font-bold capitalize">Jane Doe</span>
-      </a>
+        ))
+       }
     </div>
   </div>
 </section>

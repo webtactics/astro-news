@@ -1,6 +1,7 @@
 ---
 import Github from "~/assets/svgs/github.astro";
 import Search01 from "~/assets/svgs/search-01.astro";
+import Menu from "~/assets/svgs/menu.astro";
 import { Navigation, otherLinks, Site } from "~/lib/constants/config";
 ---
 
@@ -8,19 +9,7 @@ import { Navigation, otherLinks, Site } from "~/lib/constants/config";
   <div class="navbar-start lg:w-1/2">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle" aria-label="Menu">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h7"></path>
-        </svg>
+        <Menu/>
       </div>
 
       <ul
@@ -28,6 +17,7 @@ import { Navigation, otherLinks, Site } from "~/lib/constants/config";
         class="menu dropdown-content z-50 bg-base-100 rounded-box w-56 shadow"
       >
         <li><a href="/">Home</a></li>
+        <li><a href="/articles">Articles</a></li>
 
         <li>
           <details>
