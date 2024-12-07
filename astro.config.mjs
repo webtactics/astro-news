@@ -7,6 +7,9 @@ import { Site } from './src/lib/constants/config';
 import { modifiedTime, readingTime } from './src/lib/utils/remarks.mjs';
 
 
+import sitemap from '@astrojs/sitemap';
+
+
 // https://astro.build/config
 export default defineConfig({
   site: Site.url,
@@ -14,7 +17,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [readingTime, modifiedTime],
   },
-  integrations: [tailwind(), mdx()],
+  integrations: [tailwind(), mdx(), sitemap()],
   experimental: {
     responsiveImages: true,
   }

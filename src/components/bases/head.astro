@@ -13,6 +13,8 @@ import { Site } from "~/lib/constants/config";
   <meta charset={Site.charset} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="alternate" type="application/rss+xml" title={Site.title} href={new URL("rss.xml", Astro.site)}/>
   <meta name="generator" content={Astro.generator} />
   <meta name="title" content={Site.title} />
   <meta name="description" content={Site.description} />

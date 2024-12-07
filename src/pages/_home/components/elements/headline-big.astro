@@ -18,7 +18,7 @@ const category = categoriesHandler.oneCategory(article.data.category.id);
 ---
 
 <article class="group">
-  <a href="#" class="flex flex-col-reverse md:flex-col gap-4">
+  <a href={`/articles/${article.id}`} class="flex flex-col-reverse md:flex-col gap-4">
     <div class="aspect-video overflow-hidden rounded-md">
       <Picture
         src={article.data.cover}
