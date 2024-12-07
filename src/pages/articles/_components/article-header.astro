@@ -23,7 +23,7 @@ const authors = authorsHandler.getAuthors(article.data.author);
 ---
 
 <section
-  class="mb-8 flex flex-col lg:flex-col-reverse items-center justify-center border-b lg:border-none py-6 pt-0 lg:pt-6"
+  class="mb-8 flex flex-col lg:flex-col-reverse items-center justify-center border-b lg:border-none pb-2 pt-0 lg:pt-6"
 >
   <div class="container px-0 lg:px-4 max-w-5xl aspect-[20/9] lg:mt-4 overflow-hidden">
     <Picture
@@ -44,12 +44,11 @@ const authors = authorsHandler.getAuthors(article.data.author);
     <h1 class="text-2xl lg:text-4xl font-bold text-left text-pretty">
       {article.data.title}
     </h1>
-    <div class="flex flex-col gap-4 items-start mt-2 lg:mt-8 text-sm">
+    <div class="flex flex-col gap-4 items-start mt-2 lg:mt-6 text-sm">
       <div class="text-base-content/70 flex items-center gap-2">
-        <!-- TODO: fix category nmae and href -->
         <span class="lg:flex items-center gap-1 hidden">
           <ResourcesAdd size="15" />
-          <a href={`/categories/${category.data.path}`} class="a-01 font-semibold">{category.data.title}</a>
+          <a href={`/categories/${category.id}`} class="a-01 font-semibold">{category.data.title}</a>
         </span>
         <div class="hidden lg:block">
           <Divider />
@@ -57,7 +56,8 @@ const authors = authorsHandler.getAuthors(article.data.author);
         <!-- TODO: Fix date and replace pubDate with lastModified -->
         <span class="flex items-center gap-1">
           <Calendar04 size="15" />
-          <time datetime={lastModified}>{formatDate(lastModified)}</time>
+          <time class="hidden lg:block" datetime={article.data.publishedTime}>{formatDate(article.data.publishedTime, "long")}</time>
+          <time class="block lg:hidden" datetime={article.data.publishedTime}>{formatDate(article.data.publishedTime, "short")}</time>
         </span>
         <Divider />
         <span class="flex items-center gap-1">

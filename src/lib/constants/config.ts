@@ -65,11 +65,11 @@ export const otherLinks: Link[] = [
     text: "Cookie Policy",
   },
   {
-    href: "/rss", // TODO: add rss
+    href: "https://astro-news-six.vercel.app/rss.xml",
     text: "RSS",
   },
   {
-    href: "/sitemap", // TODO: add sitemap
+    href: "https://astro-news-six.vercel.app/sitemap-index.xml",
     text: "Sitemap",
   }
 ]
