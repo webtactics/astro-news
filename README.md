@@ -1,47 +1,77 @@
-# Astro Starter Kit: Minimal
+# Astro News 📰
 
-```sh
-npm create astro@latest -- --template minimal
+A news website built with Astro, designed to provide a modern and responsive news reading experience.
+
+## 🌐 Demo
+
+Explore the live demo here: [**Live Demo**](https://astro-news-six.vercel.app/)
+
+## 🚀 Installation
+
+Follow the steps below to set up and run the project locally:
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Mrahmani71/astro-news.git
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+### Install Dependencies
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+bun install
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Run Development Server
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+bun dev
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+## ✨ Features
 
-## 🧞 Commands
+### Implemented Features
 
-All commands are run from the root of the project, from a terminal:
+- Content Layer
+- Navigation
+- Responsive Design
+- Pagination
+- RSS Feed
+- Sitemap
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Upcoming Features
 
-## 👀 Want to learn more?
+- Sharing Options
+- SEO Optimization
+- Search Functionality
+- Keystatic Integration
+- Open Graph (OG) Image Generation
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 💻 Technologies
+
+This project leverages cutting-edge web technologies:
+
+- [Astro V5.0](https://astro.build/) - Modern static site builder
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [DaisyUI](https://daisyui.com/) - Tailwind CSS component library
+- [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript
+- [MDX](https://mdxjs.com/) - Markdown with JSX support
+- [Bun V1.3.8](https://bun.sh/) - Fast JavaScript runtime
+- [Vercel](https://vercel.com/) - Deployment platform
+- [HugeIcons](https://hugeicons.com/) - Icon library
+
+## 💡 Inspiration
+
+Design and concept inspired by:
+
+- [BBC News](https://www.bbc.com)
+- [NewsHub - News Website](https://dribbble.com/shots/21678041-NewsHub-News-Website)
+- [Let'sread - News Landing Page](https://dribbble.com/shots/24675325-Let-sread-News-Landing-Page)
+
+## 📄 License
+
+Open sourced under the [MIT license](LICENSE).
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Mrahmani71/astro-news/issues).

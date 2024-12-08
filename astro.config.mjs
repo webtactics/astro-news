@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import { Site } from './src/lib/constants/config';
 import { modifiedTime, readingTime } from './src/lib/utils/remarks.mjs';
-
+import pagefind from "astro-pagefind";
 
 import sitemap from '@astrojs/sitemap';
 
@@ -17,7 +17,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [readingTime, modifiedTime],
   },
-  integrations: [tailwind(), mdx(), sitemap()],
+  integrations: [tailwind(), mdx(), sitemap(), pagefind()],
   experimental: {
     responsiveImages: true,
   }
