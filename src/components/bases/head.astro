@@ -4,7 +4,7 @@ import "@fontsource/source-sans-pro/400.css";
 import "@fontsource/source-sans-pro/600.css";
 import "@fontsource/source-sans-pro/700.css";
 import "@fontsource-variable/source-serif-4";
-
+import {capitalizeFirstLetter} from "~/lib/utils/letter";
 import "~/assets/styles/globals.css";
 import { Site } from "~/lib/constants/config";
 
@@ -14,6 +14,8 @@ type Props = {
 };
 
 const { title, description } = Astro.props;
+
+
 ---
 
 <head>
@@ -25,6 +27,6 @@ const { title, description } = Astro.props;
   <meta name="generator" content={Astro.generator} />
   <meta name="title" content={title} />
   <meta name="description" content={description} />
-  <title>{title}</title>
+  <title>{capitalizeFirstLetter(title)}</title>
   <ClientRouter />
 </head>

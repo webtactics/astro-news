@@ -12,7 +12,7 @@ if (!entry) {
 const [HERO] = entry.data.blocks;
 ---
 
-<BaseLayout title={`${entry.data.title} | ${Site.title}`} description={entry.data.description}>
+<BaseLayout title={`${entry.data.title} - ${Site.title}`} description={entry.data.description}>
   <div class="container flex flex-col items-center justify-center py-20">
     <h1 class="text-4xl">{HERO.title}</h1>
     <p class="mt-2">{HERO.description}</p>

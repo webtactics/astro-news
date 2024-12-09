@@ -12,11 +12,10 @@ function isActive(item: Link, currentPath: string) {
   return (
     (item.text === "Home" && currentPath === "/") ||
     (item.text === "Articles" && (segment !== undefined && !isNaN(Number(segment)) && Number(segment) >= 1) ||
-    (item.text !== "Articles" && item.href === currentPath.split("/").slice(0, -1).join("/"))
+    (item.text !== "Articles" && currentPath.split("/").includes(item.text.toLocaleLowerCase()))
   )
 )
 }
-
 
 function formatHref(href: string) {
   return href === "/" ? "/" : `${href}/1`;

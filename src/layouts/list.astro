@@ -11,7 +11,7 @@ type Props = {
 const { title, description } = Astro.props;
 ---
 
-<BaseLayout title={`${title} | ${Site.title}`} description={description}>
+<BaseLayout title={`${title} - ${Site.title}`} description={description}>
   <div class="container flex flex-col h-full pb-8 pt-4" data-pagefind-ignore="all">
     <ViewListHeader title={title} />
     <slot />

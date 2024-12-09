@@ -13,7 +13,7 @@ if (!entry || entry === undefined) {
 
 const {Content} = await render(entry);
 ---
-<BaseLayout title={`${entry.data.title} | ${Site.title}`} description={entry.data.description}>
+<BaseLayout title={`${entry.data.title} - ${Site.title}`} description={entry.data.description}>
     <ContentLayout >
         <Content />
     </ContentLayout>
