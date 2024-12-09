@@ -25,7 +25,7 @@ if (!view || view === undefined) {
 const [HEADER] = view.data.blocks;
 ---
 
-<ListLayout title={HEADER.title}>
+<ListLayout title={`${HEADER.title}`} description={HEADER.description}>
   <section class="flex-1">
     <ul class="flex flex-col gap-4">
       {

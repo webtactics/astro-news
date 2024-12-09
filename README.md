@@ -60,13 +60,20 @@ This project leverages cutting-edge web technologies:
 - [Vercel](https://vercel.com/) - Deployment platform
 - [HugeIcons](https://hugeicons.com/) - Icon library
 
-## 💡 Inspiration
+## 💡  Inspirations and Code Concepts
 
-Design and concept inspired by:
+This project draws inspiration from the following sources:
+
+### Designs
 
 - [BBC News](https://www.bbc.com)
 - [NewsHub - News Website](https://dribbble.com/shots/21678041-NewsHub-News-Website)
 - [Let'sread - News Landing Page](https://dribbble.com/shots/24675325-Let-sread-News-Landing-Page)
+
+### Articles
+
+- [Creating A Pagination Component With Astro](https://rimdev.io/creating-a-pagination-component-with-astro)
+- [Adding search to static Astro sites](https://website-thomas-astro.vercel.app/blog/search-static-astro-website)
 
 ## 📄 License
 

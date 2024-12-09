@@ -1,9 +1,18 @@
 ---
 import BaseLayout from "~/layouts/base.astro";
 import "@pagefind/default-ui/css/ui.css";
+import { getEntry } from "astro:content";
+import { Site } from "~/lib/constants/config";
+
+const entry = await getEntry("views", "search");
+
+if (!entry) {
+  return Astro.redirect("/404");
+}
+
 ---
 
-<BaseLayout>
+<BaseLayout title={`${entry.data.title} | ${Site.title}`} description={entry.data.description}>
   <div class="container py-4">
     <script is:inline src="/pagefind/pagefind-ui.js"></script>
 
@@ -59,7 +68,6 @@ import "@pagefind/default-ui/css/ui.css";
         }).catch(console.error);
       };
 
-      // Listen for Astro's navigation events and initialize the script
       document.addEventListener("astro:page-load", () => {
         initializePagefind();
       });

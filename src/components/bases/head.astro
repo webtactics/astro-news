@@ -7,6 +7,13 @@ import "@fontsource-variable/source-serif-4";
 
 import "~/assets/styles/globals.css";
 import { Site } from "~/lib/constants/config";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
 ---
 
 <head>
@@ -16,8 +23,8 @@ import { Site } from "~/lib/constants/config";
   <link rel="sitemap" href="/sitemap-index.xml" />
   <link rel="alternate" type="application/rss+xml" title={Site.title} href={new URL("rss.xml", Astro.site)}/>
   <meta name="generator" content={Astro.generator} />
-  <meta name="title" content={Site.title} />
-  <meta name="description" content={Site.description} />
-  <title>{Site.title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <title>{title}</title>
   <ClientRouter />
 </head>

@@ -1,0 +1,20 @@
+---
+import ContentLayout from "~/layouts/content.astro";
+import BaseLayout from "~/layouts/base.astro";
+import { getEntry, render } from "astro:content";
+import { Site } from "~/lib/constants/config";
+
+
+const entry = await getEntry("views", "about");
+
+if (!entry || entry === undefined) {
+   return Astro.redirect("/404");
+}
+
+const {Content} = await render(entry);
+---
+<BaseLayout title={`${entry.data.title} | ${Site.title}`} description={entry.data.description}>
+    <ContentLayout >
+        <Content />
+    </ContentLayout>
+</BaseLayout>

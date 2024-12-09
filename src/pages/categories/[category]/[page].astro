@@ -10,7 +10,6 @@ export const getStaticPaths = (async ({paginate}) => {
 
   const allCategories = categoriesHandler.allCategories();
   const allArticles = articlesHandler.allArticles();
-    
   return allCategories.flatMap((category) => {
     const filteredArticles = allArticles.filter((article) => article.data.category.id === category.id);
     return paginate(filteredArticles, {
@@ -26,9 +25,8 @@ const articles = page.data;
 const pathname = new URL(Astro.request.url).pathname.split("/");
 const firstPath = pathname[1];
 ---
-<ListLayout title={params.category}>
+<ListLayout title={`${params.category}`} description={`${params.category.toUpperCase()} articles`}>
   <ul class="flex flex-col gap-2 flex-1">
-
     {
       articles.map((article) => (
         <li>

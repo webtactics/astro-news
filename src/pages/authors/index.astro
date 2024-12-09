@@ -1,13 +1,37 @@
 ---
+import { getEntry } from "astro:content";
 import Author from "~/components/shared/author.astro";
 import ListLayout from "~/layouts/list.astro";
 import { authorsHandler } from "~/lib/handlers/authors";
 
+const entry = await getEntry("views","authors")
+
+if (!entry) {
+    return Astro.redirect("/404")
+}
+
 const authors = authorsHandler.allAuthors();
+
+const [HEADER, ATTENTION] = entry.data.blocks;
 
 ---
 
-<ListLayout title="Authors">
+<ListLayout title={HEADER.title} description={HEADER.description}>
+
+    <section role="alert" class="alert alert-info mb-4 bg-info/60">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="h-6 w-6 shrink-0 stroke-current">
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>{ATTENTION.description}</span>
+    </section>
     <section class="flex-1">
         <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-4">
             {
