@@ -2,6 +2,11 @@
 
 A news website built with Astro, designed to provide a modern and responsive news reading experience.
 
+> **ℹ️ Info**  
+> Astro news is my first open-source project, so there may be some bugs or issues. I’ll address them as quickly as possible.
+
+![Astro News](./src/assets/images/screenshot-astronews.png "Astro News")
+
 ## 🌐 Demo
 
 Explore the live demo here: [**Live Demo**](https://astro-news-six.vercel.app/)
@@ -36,14 +41,15 @@ bun dev
 - Navigation
 - Responsive Design
 - Pagination
+- Search Functionality
 - RSS Feed
 - Sitemap
 
 ### Upcoming Features
 
 - Sharing Options
+- Dark Mode
 - SEO Optimization
-- Search Functionality
 - Keystatic Integration
 - Open Graph (OG) Image Generation
 
