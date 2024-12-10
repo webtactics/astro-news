@@ -44,12 +44,12 @@ bun dev
 - Search Functionality
 - RSS Feed
 - Sitemap
+- Dark Mode
+- SEO Optimization (~)
 
 ### Upcoming Features
 
 - Sharing Options
-- Dark Mode
-- SEO Optimization
 - Keystatic Integration
 - Open Graph (OG) Image Generation
 

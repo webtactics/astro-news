@@ -78,3 +78,19 @@ const meta = await getMeta(entry);
     </script>
   </div>
 </BaseLayout>
+
+<style is:inline>
+  :root {
+    --pagefind-ui-scale: 0.9;
+    --pagefind-ui-primary: oklch(var(--p));
+    --pagefind-ui-text: oklch(var(--bc));
+    --pagefind-ui-background: oklch(var(--b1));
+    --pagefind-ui-border: oklch(var(--b2));
+    --pagefind-ui-tag: oklch(var(--b2));
+    --pagefind-ui-border-width: 2px;
+    --pagefind-ui-border-radius: 8px;
+    --pagefind-ui-image-border-radius: 8px;
+    --pagefind-ui-image-box-ratio: 3 / 2;
+    --pagefind-ui-font: var(--font-sans);
+  }
+</style>

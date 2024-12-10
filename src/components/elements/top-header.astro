@@ -3,6 +3,7 @@ import Github from "~/assets/svgs/github.astro";
 import Search01 from "~/assets/svgs/search-01.astro";
 import Menu from "~/assets/svgs/menu.astro";
 import { Navigation, otherLinks, Site } from "~/lib/constants/config";
+import ThemeController from "../bases/theme-controller.astro";
 ---
 
 <div class="navbar bg-base-100 border-b">
@@ -56,6 +57,7 @@ import { Navigation, otherLinks, Site } from "~/lib/constants/config";
     <a class="text-xl px-2" href="/">{Site.title}</a>
   </div>
   <div class="navbar-end">
+    <ThemeController/>
     <a class="btn btn-ghost btn-circle" href="/search" aria-label="Search">
       <Search01 />
     </a>
