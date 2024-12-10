@@ -3,7 +3,6 @@ import { categoriesHandler } from '~/lib/handlers/categories';
 
 export function getStaticPaths() {
     const categories = categoriesHandler.allCategories();
-    console.log(categories);
     return categories.map((category) => ({ params: { category: category.id } }));
 }
 

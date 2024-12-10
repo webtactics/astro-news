@@ -11,3 +11,23 @@ export type Link = {
   text: string;
   icon?: string;
 }
+
+type Author = {
+  name: string;
+  link: string;
+}
+
+export type Meta = {
+  title: string;
+  metaTitle: string;
+  description: string;
+  type: "article" | "website";
+  ogImage: string;
+  ogImageAlt: string;
+}
+
+export type ArticleMeta = Meta & {
+  publishedTime: string;
+  lastModified: string;
+  authors: Author[];
+}

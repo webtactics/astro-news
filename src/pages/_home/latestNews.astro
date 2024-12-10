@@ -1,6 +1,7 @@
 ---
-import Card from "~/components/shared/card.astro";
-import HeaderSection from "./header-section.astro";
+
+import NewsCard from "~/components/cards/newsCard.astro";
+import HeaderSection from "./headerSection.astro";
 import { articlesHandler } from "~/lib/handlers/articles";
 
 const articles = articlesHandler.allArticles();
@@ -10,7 +11,7 @@ const articles = articlesHandler.allArticles();
     <HeaderSection title="Latest News" link_title="View all" link_url="/articles"/>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 gap-y-6 md:grid-rows-2">
         {
-            articles.slice(0,6).map((article) => <Card article={article}/>)
+            articles.slice(0,6).map((article) => <NewsCard article={article}/>)
         }
     </div>
 </section>

@@ -1,17 +1,21 @@
 ---
-import BaseLayout from "../layouts/base.astro";
-import Headlines from "./_home/components/headlines.astro";
-import LatestNews from "./_home/components/latestNews.astro";
-import Authors from "./_home/components/authors.astro";
+import BaseLayout from "~/layouts/base.astro";
 import { getEntry } from "astro:content";
+import Headlines from "./_home/headlines.astro";
+import LatestNews from "./_home/latestNews.astro";
+import Authors from "./_home/authors.astro";
+import { getMeta } from "~/lib/utils/getMeta";
+
 const entry = await getEntry("views", "home");
 
 if (!entry) {
   return Astro.redirect("/404");
 }
+
+const meta = await getMeta(entry);
 ---
 
-<BaseLayout title={`${entry.data.title}`} description={entry.data.description}>
+<BaseLayout {...meta}>
   <Headlines />
   <LatestNews />
   <Authors />

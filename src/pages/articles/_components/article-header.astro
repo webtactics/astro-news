@@ -13,13 +13,12 @@ import { authorsHandler } from "~/lib/handlers/authors";
 type Props = {
   article: CollectionEntry<"articles">;
   readingTime: string;
-  lastModified: string;
 };
 
-const { article, readingTime, lastModified } = Astro.props;
+const { article, readingTime } = Astro.props;
 
 const category = categoriesHandler.oneCategory(article.data.category.id);
-const authors = authorsHandler.getAuthors(article.data.author);
+const authors = authorsHandler.getAuthors(article.data.authors);
 ---
 
 <section

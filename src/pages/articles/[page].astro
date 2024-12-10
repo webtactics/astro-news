@@ -5,7 +5,9 @@ import ListLayout from "~/layouts/list.astro";
 import { Site } from "~/lib/constants/config";
 import PaginationOne from "~/components/shared/pagination-one.astro";
 import { getEntry } from "astro:content";
-import WideCard from "~/components/shared/wide-card.astro";
+import WideCard from "~/components/cards/wideCard.astro";
+import { getMeta } from "~/lib/utils/getMeta";
+
 export const getStaticPaths = (async ({ paginate }) => {
   const articles = await getCollection("articles");
   return paginate(articles, { pageSize: Site.postsPerPage });
@@ -16,16 +18,18 @@ const articles = page.data;
 const pathname = new URL(Astro.request.url).pathname.split("/");
 const firstPath = pathname[1];
 
-const view = await getEntry("views", "articles");
+const entry = await getEntry("views", "articles");
 
-if (!view || view === undefined) {
+if (!entry) {
   return Astro.redirect("/404");
 }
 
-const [HEADER] = view.data.blocks;
+const meta = await getMeta(entry);
+
+const [HEADER] = entry.data.blocks;
 ---
 
-<ListLayout title={`${HEADER.title}`} description={HEADER.description}>
+<ListLayout header={HEADER.title} meta={meta}>
   <section class="flex-1">
     <ul class="flex flex-col gap-4">
       {
