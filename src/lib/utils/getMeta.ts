@@ -7,7 +7,7 @@ import { capitalizeFirstLetter } from "./letter";
 
 type getMeta = CollectionEntry<"articles" | "views">;
 
-export const getMeta = async (collection: getMeta): Promise<Meta | ArticleMeta> => {
+export const getMeta = async (collection: getMeta, category?: string): Promise<Meta | ArticleMeta> => {
   try {
     
     if (collection.collection === "articles") {
@@ -33,8 +33,10 @@ export const getMeta = async (collection: getMeta): Promise<Meta | ArticleMeta> 
     }
 
     if (collection.collection === "views") {
+      const title = collection.id === "categories" && category ? `${capitalizeFirstLetter(category)}  - ${Site.title}` : collection.id === "home" ? Site.title : `${capitalizeFirstLetter(collection.data.title)} - ${Site.title}`
+      
       return {
-        title: `${capitalizeFirstLetter(collection.data.title)} - ${Site.title}`,
+        title: title,
         metaTitle: capitalizeFirstLetter(collection.data.title),
         description: collection.data.description,
         ogImage: defaultImage.src,

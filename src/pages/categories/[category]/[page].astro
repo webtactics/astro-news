@@ -35,7 +35,7 @@ if (!entry) {
   return Astro.redirect("/404");
 }
 
-const meta = await getMeta(entry);
+const meta = await getMeta(entry, params.category);
 ---
 
 <ListLayout header={params.category} meta={meta}>
